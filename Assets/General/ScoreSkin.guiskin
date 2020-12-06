@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ScoreSkin
   m_EditorClassIdentifier: 
-  m_Font: {fileID: 12800000, guid: 969bac9f696f63643bf8f7acdbd7e5bb, type: 3}
+  m_Font: {fileID: 12800000, guid: 61ac20364913e7b49a2b71c27fc81d85, type: 3}
   m_box:
     m_Name: box
     m_Normal:
