@@ -15,10 +15,4 @@ public class GameData
     {
         this.upgrades = upgrades;
     }
-
-    public void LoadData()
-    {
-
-    }
-
 }

@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     private float targetY = 0.0f;
-    // Start is called before the first frame update
+
+    GameManager manager;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         targetY = transform.position.y;
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -48,6 +51,17 @@ public class PlayerController : MonoBehaviour
             pos.y = -boundY;
         }
         transform.position = pos;
+    }
+
+    private void FixedUpdate()
+    {
+        Upgrade size = manager.GetData().upgrades.PaddleSize;
+
+        Vector3 scale = transform.localScale;
+
+        scale.y = 1 + size.increaseValue * size.stacks;
+
+        transform.localScale = scale;
     }
 
     /*public void OnDrag(PointerEventData data)

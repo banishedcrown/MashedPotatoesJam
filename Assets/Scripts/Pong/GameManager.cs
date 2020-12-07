@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("current score: " + this.data.currentPB);
     }
 
+    public void RemovePB(long value)
+    {
+        this.data.currentPB -= value;
+        Debug.Log("current score: " + this.data.currentPB);
+    }
+
     public GameData GetData()
     {
         return this.data;

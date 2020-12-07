@@ -52,6 +52,7 @@ public class UpgradeButton : MonoBehaviour
 
     void Clicked()
     {
+        manager.RemovePB(theUpgrade.current_cost);
         theUpgrade.addStack(1);
     }
     
