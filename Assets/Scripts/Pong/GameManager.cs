@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
 
-        if(g.Length > 1)
+        if (g.Length > 1)
         {
             GameObject.Destroy(this.gameObject);
         }
@@ -37,4 +38,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddPB(long value)
+    {
+        this.data.currentPB += value;
+        this.data.totalPB += value;
+        Debug.Log("current score: " + this.data.currentPB);
+    }
+
+    public GameData GetData()
+    {
+        return this.data;
+    }
 }
