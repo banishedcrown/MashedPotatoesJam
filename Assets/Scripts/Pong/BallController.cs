@@ -7,9 +7,11 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
 
     private Rigidbody2D rb2d;
+    private Vector3 spawnPoint;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        spawnPoint = transform.parent.Find("Court").Find("Ball Spawn").transform.position;
         Invoke("GoBall", 2);
     }
 
@@ -28,7 +30,7 @@ public class BallController : MonoBehaviour
     void ResetBall()
     {
         rb2d.velocity = Vector2.zero;
-        transform.position = Vector2.zero;
+        transform.position = spawnPoint;
     }
 
     void RestartGame()
