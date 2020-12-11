@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum UpgradeNames { 
     None, 
-    Paddle_Size, 
+    Player_Paddle_Size, 
     Player_Speed,
     AI_Player, 
     AI_Enemy, 
@@ -27,9 +27,9 @@ public class UpgradeData
 
 
     //level of upgrades for each upgrade
-    public Upgrade PaddleSize = new Upgrade(UpgradeNames.Paddle_Size, 1, 0, 3, 0.2f);
-    public Upgrade PlayerSpeed = new Upgrade(UpgradeNames.Player_Speed, 2, 0, 4, 0.05f);
-
+    public Upgrade Player_Paddle_Size = new Upgrade(UpgradeNames.Player_Paddle_Size, 1, 0, 3, 0.2f);
+    public Upgrade Player_Speed = new Upgrade(UpgradeNames.Player_Speed, 2, 0, 4, 0.05f);
+    public Upgrade AI_Player = new Upgrade(UpgradeNames.AI_Player, 10, 0, 0, 0);
     public UpgradeData()
     {
 
@@ -37,10 +37,12 @@ public class UpgradeData
 
     public Upgrade GetUpgradeByName(UpgradeNames name)
     {
-        if (name == this.PaddleSize.name) 
-            return PaddleSize;
-        if (name == this.PlayerSpeed.name) 
-            return PlayerSpeed;
+        if (name == this.Player_Paddle_Size.name) 
+            return Player_Paddle_Size;
+        if (name == this.Player_Speed.name) 
+            return Player_Speed;
+        if (name == this.AI_Player.name)
+            return AI_Player;
 
         return null;
     }

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     private float targetY = 0.0f;
+
+    private bool useAI = false;
 
     GameManager manager;
 
@@ -27,6 +27,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var vel = rb2d.velocity;
+
+        if (useAI)
+        {
+            vel = doAI();
+        }
+        else
+        {
+            vel.y = 0;
+        }
+
         if (Input.GetKey(moveUp))
         {
             vel.y = speed;
@@ -35,10 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             vel.y = -speed;
         }
-        else
-        {
-            vel.y = 0;
-        }
+
         rb2d.velocity = vel;
 
         var pos = transform.position;
@@ -57,15 +64,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         UpgradeData upgrades = manager.GetData().upgrades;
-        Upgrade size = upgrades.PaddleSize;
-        Upgrade speed = upgrades.PlayerSpeed;
+        Upgrade size = upgrades.Player_Paddle_Size;
+        Upgrade speed = upgrades.Player_Speed;
+        Upgrade PlayerAI = upgrades.AI_Player;
         
         
         Vector3 scale = transform.localScale;
         scale.y = 1 + size.increaseValue * size.stacks;
         transform.localScale = scale;
 
-        this.speed = baseSpeed + speed.stacks*speed.increaseValue; 
+        this.speed = baseSpeed + speed.stacks*speed.increaseValue;
+
+        this.useAI = PlayerAI.stacks >= 1 ? true : false;
     }
 
     /*public void OnDrag(PointerEventData data)
@@ -77,4 +87,58 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = transform.position;
     }*/
+
+    Vector2 doAI()
+    {
+        var vel = rb2d.velocity;
+        GameObject ball = getClosestBall();
+        Vector2 Tpos;
+        if (ball != null)
+        {
+            Tpos = ball.transform.position;
+        }
+        else
+        {
+            Tpos = transform.position;
+        }
+
+        if (Math.Abs(Tpos.y - transform.position.y) < 0.05)
+        {
+            vel.y = 0;
+        }
+        else if (Tpos.y > transform.position.y)
+        {
+            vel.y = speed;
+        }
+        else if (Tpos.y < transform.position.y)
+        {
+            vel.y = -speed;
+        }
+
+        return vel;
+    }
+    GameObject getClosestBall()
+    {
+        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        float minDistance = float.PositiveInfinity;
+        Vector3 minPos = Vector3.zero;
+        GameObject ball = null;
+
+        foreach (GameObject g in balls)
+        {
+            if (g.transform.position.x > 0)
+            {
+                float dist = Vector2.Distance(transform.position, g.transform.position);
+                if (dist < minDistance)
+                {
+
+                    minPos = g.transform.position;
+                    minDistance = dist;
+                    ball = g;
+                }
+            }
+        }
+
+        return ball;
+    }
 }

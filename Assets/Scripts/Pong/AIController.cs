@@ -69,7 +69,7 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Upgrade size = manager.GetData().upgrades.PaddleSize;
+        Upgrade size = manager.GetData().upgrades.Player_Paddle_Size;
 
         Vector3 scale = transform.localScale;
 

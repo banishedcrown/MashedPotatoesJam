@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,9 @@ public class GameManager : MonoBehaviour
     GameData data;
     UpgradeData upgrades;
 
-    Text CurrentPBLabel;
+    TMP_Text CurrentPBLabel;
+
+    public int alterMoney = 0;
     private void Awake()
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
@@ -27,9 +30,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         upgrades = new UpgradeData();
-        CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<Text>();
+        CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
 
-        GameData loadedData = SaveSystem.LoadData();
+        GameData loadedData = null;//SaveSystem.LoadData();
         if (loadedData != null)
         {
             data = loadedData;
@@ -45,6 +48,11 @@ public class GameManager : MonoBehaviour
     private void OnGUI()
     {
         CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+        if(alterMoney != 0)
+        {
+            AddPB(alterMoney);
+            alterMoney = 0;
+        }
     }
 
     public void AddPB(long value)
