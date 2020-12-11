@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PongManager : MonoBehaviour
 {
-    public static int PlayerScore1 = 0;
-    public static int PlayerScore2 = 0;
+    public static int PlayerScore = 0;
+    public static int EnemyScore = 0;
 
     public int xPosition1 = -120;
     public int xPosition2 = 150;
@@ -21,39 +22,45 @@ public class PongManager : MonoBehaviour
     GameObject pongScoreAI;
     GameObject pongScorePlayer;
 
+    GameObject canvas;
+
+    Text PlayerScoreText;
+    Text EnemyScoreText;
+
     // Start is called before the first frame update
     void Start()
     {
         theBall = GameObject.FindGameObjectWithTag("Ball");
         manager = GameObject.FindGameObjectWithTag("Manager");
+        canvas = transform.Find("Canvas").gameObject;
+        PlayerScoreText = canvas.transform.Find("PlayerScore").GetComponent<Text>();
+        EnemyScoreText = canvas.transform.Find("EnemyScore").GetComponent<Text>();
     }
 
     void OnGUI()
     {
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width / 2 + xPosition1, yPosition1, 100, 100), "" + PlayerScore1);
-        GUI.Label(new Rect(Screen.width / 2 + xPosition2, yPosition2, 100, 100), "" + PlayerScore2);
-
-        GUI.Label(new Rect(Screen.width / 2, yPosition2, 100, 100), "" + manager.GetComponent<GameManager>().GetData().currentPB);
+        PlayerScoreText.text = "" + PlayerScore;
+        EnemyScoreText.text = "" + EnemyScore;
 
         if (gameEnded)
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART"))
             {
-                PlayerScore1 = 0;
-                PlayerScore2 = 0;
+                PlayerScore = 0;
+                EnemyScore = 0;
                 theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
                 gameEnded = false;
             }
         }
 
-        if (PlayerScore1 == 5)
+        if (PlayerScore == 5)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
             gameEnded = true;
         }
-        else if (PlayerScore2 == 5)
+        else if (EnemyScore == 5)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
@@ -68,12 +75,12 @@ public class PongManager : MonoBehaviour
         
             if (wallID == "RightWall")
             {
-                PlayerScore1++;
+                PlayerScore++;
                 manager.SendMessage("AddPB", 1);
             }
             else
             {
-                PlayerScore2++;
+                EnemyScore++;
                 manager.SendMessage("AddPB", 2);
             }
             

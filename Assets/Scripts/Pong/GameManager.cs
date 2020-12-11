@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     GameData data;
     UpgradeData upgrades;
+
+    Text CurrentPBLabel;
     private void Awake()
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         upgrades = new UpgradeData();
+        CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<Text>();
 
         GameData loadedData = SaveSystem.LoadData();
         if (loadedData != null)
@@ -36,6 +40,11 @@ public class GameManager : MonoBehaviour
             data = new GameData(upgrades);
             SaveSystem.SaveData(data);
         }
+    }
+
+    private void OnGUI()
+    {
+        CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
     }
 
     public void AddPB(long value)

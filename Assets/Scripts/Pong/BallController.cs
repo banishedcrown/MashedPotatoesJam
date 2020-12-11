@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        spawnPoint = transform.parent.Find("Court").Find("Ball Spawn").transform.position;
+        spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         Invoke("GoBall", 2);
     }
 
