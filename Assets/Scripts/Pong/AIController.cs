@@ -28,8 +28,17 @@ public class AIController : MonoBehaviour
     {
         var vel = rb2d.velocity;
         GameObject ball = getClosestBall();
-        Rigidbody2D ballRB = ball.GetComponent<Rigidbody2D>();
-        Vector2 Tpos = ball.transform.position;
+
+        Vector2 Tpos;
+        if (ball != null)
+        {
+            Tpos = ball.transform.position;
+        }
+        else
+        {
+            Tpos = transform.position;
+        }
+
         if(Math.Abs(Tpos.y - transform.position.y) < 0.05)
         {
             vel.y = 0;
@@ -72,8 +81,8 @@ public class AIController : MonoBehaviour
     {
         GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
         float minDistance = float.PositiveInfinity;
-        Vector3 minPos = balls[0].transform.position;
-        GameObject ball = balls[0];
+        Vector3 minPos = Vector3.zero;
+        GameObject ball = null;
 
         foreach(GameObject g in balls)
         {
