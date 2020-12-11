@@ -66,7 +66,6 @@ public class AIController : MonoBehaviour
 
         scale.y = 1 + size.increaseValue * size.stacks;
 
-        transform.localScale = scale;
     }
 
     GameObject getClosestBall()
