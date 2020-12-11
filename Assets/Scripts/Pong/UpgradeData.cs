@@ -1,7 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-public enum UpgradeNames { None, PaddleSize, PlayerSpeed };
+public enum UpgradeNames { 
+    None, 
+    Paddle_Size, 
+    Player_Speed,
+    AI_Player, 
+    AI_Enemy, 
+
+    Ball_Speed,
+    Ball_Value, //flat increase
+    Ball_Multiplier, //similar to rally, but upgrades increase how fast the bounces increase value
+    Ball_Rally, //chance to spawn a rally ball, that gains points per bounce. 
+
+    Pong_Instance_Increase,
+    Pong_Set_Speed,
+    Pong_Score_Limit,
+    Pong_Auto_Resart,
+
+    Misc_Loss,
+};
 
 [Serializable]
 public class UpgradeData
@@ -9,13 +27,12 @@ public class UpgradeData
 
 
     //level of upgrades for each upgrade
-    public Upgrade PaddleSize;
-    public Upgrade PlayerSpeed;
+    public Upgrade PaddleSize = new Upgrade(UpgradeNames.Paddle_Size, 1, 0, 3, 0.2f);
+    public Upgrade PlayerSpeed = new Upgrade(UpgradeNames.Player_Speed, 2, 0, 4, 0.05f);
 
     public UpgradeData()
     {
-        PaddleSize = new Upgrade(UpgradeNames.PaddleSize, 1, 0, 3, 0.2f);
-        PlayerSpeed = new Upgrade(UpgradeNames.PlayerSpeed, 2, 0, 4, 0.05f);
+
     }
 
     public Upgrade GetUpgradeByName(UpgradeNames name)
