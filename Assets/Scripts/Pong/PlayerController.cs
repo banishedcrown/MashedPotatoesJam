@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public KeyCode moveUp = KeyCode.W;
     public KeyCode moveDown = KeyCode.S;
-    public float speed = 10.0f;
+    public float baseSpeed = 3.0f;
+    private float speed = 0.0f;
     public float boundY = 4.25f;
     private Rigidbody2D rb2d;
 
@@ -55,13 +56,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Upgrade size = manager.GetData().upgrades.PaddleSize;
-
+        UpgradeData upgrades = manager.GetData().upgrades;
+        Upgrade size = upgrades.PaddleSize;
+        Upgrade speed = upgrades.PlayerSpeed;
+        
+        
         Vector3 scale = transform.localScale;
-
         scale.y = 1 + size.increaseValue * size.stacks;
-
         transform.localScale = scale;
+
+        this.speed = baseSpeed + speed.stacks*speed.increaseValue; 
     }
 
     /*public void OnDrag(PointerEventData data)
