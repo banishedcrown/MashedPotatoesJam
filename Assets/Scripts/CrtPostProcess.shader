@@ -59,11 +59,17 @@
 			{
 				uv -= 0.5;
 				uv *= 2.;
-				uv.x *= 1. + pow(abs(uv.y) / bend, 2.);
-				uv.y *= 1. + pow(abs(uv.x) / bend, 2.);
 
-				uv /= 2.5;
+				uv.x *= 1.;
+				uv.y *= 1.;
+
+				//Switch to if you want to have Bending
+				//uv.x *= 1. + pow(abs(uv.y) / bend, 2.);
+				//uv.y *= 1. + pow(abs(uv.x) / bend, 2.);
+
+				uv /= 2.;
 				return uv + 0.5;
+			
 			}
 
 			float vignette(half2 uv, float size, float smoothness, float edgeRounding)
