@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -31,7 +32,20 @@ public class GameManager : MonoBehaviour
     {
         upgrades = new UpgradeData();
         CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+    }
 
+    private void OnGUI()
+    {
+        CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+        if(alterMoney != 0)
+        {
+            AddPB(alterMoney);
+            alterMoney = 0;
+        }
+    }
+
+    public void LoadGame()
+    {
         GameData loadedData = null;//SaveSystem.LoadData();
         if (loadedData != null)
         {
@@ -45,14 +59,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnGUI()
+    public void NewGame()
     {
-        CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-        if(alterMoney != 0)
+        if (SaveSystem.SaveExists())
         {
-            AddPB(alterMoney);
-            alterMoney = 0;
+
         }
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void AddPB(long value)

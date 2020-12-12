@@ -204,7 +204,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 67938375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 705764901023466978}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 705764901023466978}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pong Scene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &67938375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +811,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1158,7 +1182,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 01a2ed03002253243a3f7faf19d47475, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: d8eb891686b2e3747bd7abe8a344f3e0, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1169,7 +1193,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580963433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 705764901023466978}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: NewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 705764901023466978}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pong Scene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1580963433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,3 +1331,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847164821}
   m_CullTransparentMesh: 0
+--- !u!1001 &705764901023466977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 705764900461206627, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 705764900461206629, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+--- !u!114 &705764901023466978 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 705764900461206626, guid: a6d3578b1a9eff246918f6c6059bba43, type: 3}
+  m_PrefabInstance: {fileID: 705764901023466977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2cb7b6198fdd2438f9bdd83514df67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
