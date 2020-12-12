@@ -16,7 +16,8 @@ public class PongManager : MonoBehaviour
     public GUISkin layout;
 
     GameObject theBall;
-    static GameObject manager;
+    static GameObject managerObject;
+    GameManager manager;
     private bool gameEnded = false;
 
     GameObject pongScoreAI;
@@ -27,14 +28,22 @@ public class PongManager : MonoBehaviour
     Text PlayerScoreText;
     Text EnemyScoreText;
 
+
+    Upgrade scoreLimit;
+    Upgrade autoRestart;
+
     // Start is called before the first frame update
     void Start()
     {
         theBall = GameObject.FindGameObjectWithTag("Ball");
-        manager = GameObject.FindGameObjectWithTag("Manager");
+        managerObject = GameObject.FindGameObjectWithTag("Manager");
+        manager = managerObject.GetComponent<GameManager>();
         canvas = transform.Find("Canvas").gameObject;
         PlayerScoreText = canvas.transform.Find("PlayerScore").GetComponent<Text>();
         EnemyScoreText = canvas.transform.Find("EnemyScore").GetComponent<Text>();
+
+        scoreLimit = manager.GetData().upgrades.Pong_Score_Limit;
+        autoRestart = manager.GetData().upgrades.Pong_Auto_Resart;
     }
 
     void OnGUI()
@@ -45,7 +54,17 @@ public class PongManager : MonoBehaviour
 
         if (gameEnded)
         {
-            if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
+            if (autoRestart.stacks == 0)
+            {
+                if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
+                {
+                    PlayerScore = 0;
+                    EnemyScore = 0;
+                    theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+                    gameEnded = false;
+                }
+            }
+            else
             {
                 PlayerScore = 0;
                 EnemyScore = 0;
@@ -54,13 +73,13 @@ public class PongManager : MonoBehaviour
             }
         }
 
-        if (PlayerScore == 5)
+        if (PlayerScore == 5 + scoreLimit.stacks*scoreLimit.increaseValue)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
             gameEnded = true;
         }
-        else if (EnemyScore == 5)
+        else if (EnemyScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
@@ -70,19 +89,20 @@ public class PongManager : MonoBehaviour
         
     }
 
-    public static void Score(string wallID)
+    public static void Score(BallController ball, string wallID, BallTypes type)
+    {
+        GameManager m = managerObject.GetComponent<GameManager>();
+        Upgrade baseBall = m.GetData().upgrades.Ball_Value;
+        if (wallID == "RightWall")
         {
-        
-            if (wallID == "RightWall")
-            {
-                PlayerScore++;
-                manager.SendMessage("AddPB", 1);
-            }
-            else
-            {
-                EnemyScore++;
-                manager.SendMessage("AddPB", 2);
-            }
+            PlayerScore++;
+            managerObject.SendMessage("AddPB", ((long)ball.currentValue) *(1+baseBall.stacks*baseBall.increaseValue));
+        }
+        else
+        {
+            EnemyScore++;
+            managerObject.SendMessage("AddPB", ((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue));
+        }
             
     }
 }

@@ -147,4 +147,9 @@ public class GameManager : MonoBehaviour
     {
         return this.data;
     }
+
+    public static GameManager GetManager()
+    {
+        return GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+    }
 }

@@ -7,6 +7,8 @@ public class BallController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    private BallTypes type;
+
     public AudioClip score;
     public AudioClip PaddleBounce;
     public AudioClip EdgeBounce;
@@ -14,37 +16,63 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector3 spawnPoint;
     private AudioSource audioSource;
+
+    public float currentValue = 0;
+
+    GameManager manager;
+    SpriteRenderer ballSprite;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        manager = GameManager.GetManager();
         spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
+        ballSprite = GetComponent<SpriteRenderer>();
         Invoke("GoBall", 2);
     }
 
     void GoBall()
     {
+        Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
+        var x = Random.Range(-1f, 1f);
+        var y = Random.Range(-x, x);
+
+        Vector2 dir = new Vector2(x, y);
         float rand = Random.Range(0, 2);
-        if (rand < 1)
+
+        if (ballSpeed.stacks > 0)
         {
-            rb2d.AddForce(new Vector2(200, -150));
+            rb2d.velocity = (dir * (3 + ballSpeed.increaseValue * ballSpeed.stacks));
         }
         else
         {
-            rb2d.AddForce(new Vector2(-200, -150));
+            rb2d.velocity = dir * 3;
         }
+
         audioSource.PlayOneShot(PaddleBounce);
     }
     void ResetBall()
     {
         rb2d.velocity = Vector2.zero;
         transform.position = spawnPoint;
+
+        type = GenerateType();
+        if(type == BallTypes.RALLY)
+        {
+            ballSprite.color = Color.red;
+        }
+        else
+        {
+            ballSprite.color = Color.white;
+        }
     }
 
     void RestartGame()
     {
+        Upgrade setSpeed = manager.GetData().upgrades.Pong_Set_Speed;
         ResetBall();
-        Invoke("GoBall", 1);
+        Invoke("GoBall", 1 *(1 - setSpeed.stacks*setSpeed.increaseValue));
         audioSource.PlayOneShot(score);
     }
 
@@ -63,8 +91,34 @@ public class BallController : MonoBehaviour
         {
             if (coll.collider.CompareTag("Wall"))
             {
+
                 audioSource.PlayOneShot(EdgeBounce);
+                
+            }
+            if (coll.collider.CompareTag("Goal"))
+            {
+                PongManager.Score(this, coll.collider.gameObject.name, type);
+                RestartGame();
             }
         }
+
+        if(type == BallTypes.RALLY)
+        {
+            Upgrade ballMultiplier = manager.GetData().upgrades.Ball_Multiplier;
+            this.currentValue += (ballMultiplier.stacks * ballMultiplier.increaseValue);
+        }
+    }
+
+    BallTypes GenerateType()
+    {
+        Upgrade ballRally = manager.GetData().upgrades.Ball_Rally;
+        float rallyChance = ballRally.stacks * ballRally.increaseValue;
+        if(Random.Range(0f,1f) < rallyChance)
+        {
+            return BallTypes.RALLY;
+        }
+
+
+        return BallTypes.NORMAL;
     }
 }

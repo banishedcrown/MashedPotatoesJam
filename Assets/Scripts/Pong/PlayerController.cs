@@ -123,10 +123,11 @@ public class PlayerController : MonoBehaviour
         float minDistance = float.PositiveInfinity;
         Vector3 minPos = Vector3.zero;
         GameObject ball = null;
+        Upgrade theUpgrade = manager.GetData().upgrades.AI_Player;
 
         foreach (GameObject g in balls)
         {
-            if (g.transform.position.x > 0)
+            if (g.transform.position.x > 0 + theUpgrade.stacks * theUpgrade.increaseValue)
             {
                 float dist = Vector2.Distance(transform.position, g.transform.position);
                 if (dist < minDistance)
