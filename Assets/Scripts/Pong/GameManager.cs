@@ -56,6 +56,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        if (SceneManager.GetActiveScene().name == "Pong Scene")
+        {
+            inGame = true;
+            CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+
+        }
+        else
+        {
+            inGame = false;
+            Button button = GameObject.Find("Load").GetComponent<Button>();
+            if (SaveSystem.SaveExists())
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
+
     private void OnGUI()
     {
         if(inGame)
@@ -113,12 +137,14 @@ public class GameManager : MonoBehaviour
         this.data.currentPB += value;
         this.data.totalPB += value;
         Debug.Log("current score: " + this.data.currentPB);
+        SaveSystem.SaveData(data);
     }
 
     public void RemovePB(long value)
     {
         this.data.currentPB -= value;
         Debug.Log("current score: " + this.data.currentPB);
+        SaveSystem.SaveData(data);
     }
 
     public GameData GetData()
