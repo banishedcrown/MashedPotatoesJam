@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +14,10 @@ public class GameManager : MonoBehaviour
 
     TMP_Text CurrentPBLabel;
 
+    public GameObject OverwritePrompt;
+
     public int alterMoney = 0;
+    bool inGame = false;
     private void Awake()
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
@@ -30,23 +34,45 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        upgrades = new UpgradeData();
-        CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+        
+        if (SceneManager.GetActiveScene().name == "Pong Scene")
+        {
+            inGame = true;
+            CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+            
+        }
+        else
+        {
+            inGame = false;
+            Button button = GameObject.Find("Load").GetComponent<Button>();
+            if (SaveSystem.SaveExists())
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
     }
 
     private void OnGUI()
     {
-        CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-        if(alterMoney != 0)
+        if(inGame)
         {
-            AddPB(alterMoney);
-            alterMoney = 0;
+            CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+            if (alterMoney != 0)
+            {
+                AddPB(alterMoney);
+                alterMoney = 0;
+            }
         }
+
     }
 
     public void LoadGame()
     {
-        GameData loadedData = null;//SaveSystem.LoadData();
+        GameData loadedData = SaveSystem.LoadData();
         if (loadedData != null)
         {
             data = loadedData;
@@ -63,8 +89,18 @@ public class GameManager : MonoBehaviour
     {
         if (SaveSystem.SaveExists())
         {
-
+            if (!OverwritePrompt.activeInHierarchy)
+            {
+                OverwritePrompt.SetActive(true);
+                return;
+            }
         }
+
+        //they clicked yes, or no save file. start a new game
+        upgrades = new UpgradeData();
+        data = new GameData(upgrades);
+        SaveSystem.SaveData(data);
+        LoadScene("Pong Scene");
     }
 
     public void LoadScene(string scene)

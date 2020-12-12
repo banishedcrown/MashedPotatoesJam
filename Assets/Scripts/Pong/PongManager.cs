@@ -45,7 +45,7 @@ public class PongManager : MonoBehaviour
 
         if (gameEnded)
         {
-            if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
             {
                 PlayerScore = 0;
                 EnemyScore = 0;
