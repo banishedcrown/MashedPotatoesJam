@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
+using UnityEditorInternal;
 using UnityEngine;
 
 public static class SaveSystem
@@ -32,5 +33,10 @@ public static class SaveSystem
             Debug.LogError("Tried to load with no saveData");
             return null;
         }
+    }
+
+    public static bool SaveExists()
+    {
+        return File.Exists(path);
     }
 }

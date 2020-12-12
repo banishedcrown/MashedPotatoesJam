@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.iOS;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +14,10 @@ public class GameManager : MonoBehaviour
 
     TMP_Text CurrentPBLabel;
 
+    public GameObject OverwritePrompt;
+
     public int alterMoney = 0;
+    bool inGame = false;
     private void Awake()
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
@@ -29,10 +34,69 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        upgrades = new UpgradeData();
-        CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+        
+        if (SceneManager.GetActiveScene().name == "Pong Scene")
+        {
+            inGame = true;
+            CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+            
+        }
+        else
+        {
+            inGame = false;
+            Button button = GameObject.Find("Load").GetComponent<Button>();
+            if (SaveSystem.SaveExists())
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+    }
 
-        GameData loadedData = null;//SaveSystem.LoadData();
+    private void OnLevelWasLoaded(int level)
+    {
+        if (SceneManager.GetActiveScene().name == "Pong Scene")
+        {
+            inGame = true;
+            CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+
+        }
+        else
+        {
+            inGame = false;
+            Button button = GameObject.Find("Load").GetComponent<Button>();
+            if (SaveSystem.SaveExists())
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+    }
+
+
+    private void OnGUI()
+    {
+        if(inGame)
+        {
+            CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+            if (alterMoney != 0)
+            {
+                AddPB(alterMoney);
+                alterMoney = 0;
+            }
+        }
+
+    }
+
+    public void LoadGame()
+    {
+        GameData loadedData = SaveSystem.LoadData();
         if (loadedData != null)
         {
             data = loadedData;
@@ -45,14 +109,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnGUI()
+    public void NewGame()
     {
-        CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-        if(alterMoney != 0)
+        if (SaveSystem.SaveExists())
         {
-            AddPB(alterMoney);
-            alterMoney = 0;
+            if (!OverwritePrompt.activeInHierarchy)
+            {
+                OverwritePrompt.SetActive(true);
+                return;
+            }
         }
+
+        //they clicked yes, or no save file. start a new game
+        upgrades = new UpgradeData();
+        data = new GameData(upgrades);
+        SaveSystem.SaveData(data);
+        LoadScene("Pong Scene");
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void AddPB(long value)
@@ -60,12 +137,14 @@ public class GameManager : MonoBehaviour
         this.data.currentPB += value;
         this.data.totalPB += value;
         Debug.Log("current score: " + this.data.currentPB);
+        SaveSystem.SaveData(data);
     }
 
     public void RemovePB(long value)
     {
         this.data.currentPB -= value;
         Debug.Log("current score: " + this.data.currentPB);
+        SaveSystem.SaveData(data);
     }
 
     public GameData GetData()
