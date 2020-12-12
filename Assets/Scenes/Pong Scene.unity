@@ -1505,11 +1505,11 @@ MonoBehaviour:
   vignetteSize: 1.9
   vignetteSmoothness: 0.6
   vignetteEdgeRound: 8
-  noiseSize: 350
+  noiseSize: 200
   noiseAmount: 0.03
-  redOffset: {x: 0, y: 0.01}
-  blueOffset: {x: 0, y: 0.01}
-  greenOffset: {x: 0, y: 0.01}
+  redOffset: {x: 0, y: 0}
+  blueOffset: {x: 0, y: 0}
+  greenOffset: {x: 0, y: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
