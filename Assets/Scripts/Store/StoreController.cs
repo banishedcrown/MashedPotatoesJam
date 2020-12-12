@@ -5,7 +5,7 @@ using UnityEngine;
 public class StoreController : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         Time.timeScale = 0;
     }

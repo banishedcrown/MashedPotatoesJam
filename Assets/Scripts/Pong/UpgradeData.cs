@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using UnityEngine;
 
 public enum UpgradeNames { 
@@ -18,32 +19,56 @@ public enum UpgradeNames {
     Pong_Score_Limit,
     Pong_Auto_Resart,
 
-    Misc_Loss,
+    Secret_Upgrade, //loss
 };
 
 [Serializable]
 public class UpgradeData
 {
-
-
     //level of upgrades for each upgrade
-    public Upgrade Player_Paddle_Size = new Upgrade(UpgradeNames.Player_Paddle_Size, 1, 0, 3, 0.2f);
-    public Upgrade Player_Speed = new Upgrade(UpgradeNames.Player_Speed, 2, 0, 4, 0.05f);
-    public Upgrade AI_Player = new Upgrade(UpgradeNames.AI_Player, 10, 0, 0, 0);
+    public Upgrade Player_Paddle_Size = new Upgrade(UpgradeNames.Player_Paddle_Size, 1, 2, 0.2f);
+    public Upgrade Player_Speed = new Upgrade(UpgradeNames.Player_Speed, 2, 3, 0.05f);
+    public Upgrade AI_Player = new Upgrade(UpgradeNames.AI_Player, 10, 100, 0.5f);
+    public Upgrade AI_Enemy = new Upgrade(UpgradeNames.AI_Enemy, 100, 5, 0.5f);
+
+    public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
+    public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 0.25f, 5);
+    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Ball_Multiplier, 50, 5, 1, 25);
+    public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Ball_Rally, 10, 3, 0.10f,10);
+
+    public Upgrade Pong_Instance_Increase = new Upgrade(UpgradeNames.Pong_Instance_Increase, 250, 10, 1, 10);
+    public Upgrade Pong_Set_Speed = new Upgrade(UpgradeNames.Pong_Set_Speed, 10, 4, 0.25f);
+    public Upgrade Pong_Score_Limit = new Upgrade(UpgradeNames.Pong_Score_Limit, 10, 4, 5);
+    public Upgrade Pong_Auto_Resart = new Upgrade(UpgradeNames.Pong_Auto_Resart, 200, 0, 0, 20);
+
+    public Upgrade Misc_Loss = new Upgrade(UpgradeNames.Secret_Upgrade, 10000, 0, 0, 100);
+
     public UpgradeData()
     {
-
+       
     }
 
     public Upgrade GetUpgradeByName(UpgradeNames name)
     {
-        if (name == this.Player_Paddle_Size.name) 
-            return Player_Paddle_Size;
-        if (name == this.Player_Speed.name) 
-            return Player_Speed;
-        if (name == this.AI_Player.name)
-            return AI_Player;
+        Upgrade[] upgrades = {
+            Player_Paddle_Size, 
+            Player_Speed,
+            AI_Player,
+            AI_Enemy,
+            Ball_Speed,
+            Ball_Value,
+            Ball_Multiplier,
+            Ball_Rally,
+            Pong_Instance_Increase,
+            Pong_Set_Speed,
+            Pong_Score_Limit,
+            Pong_Auto_Resart,
+            Misc_Loss };
 
+        foreach(Upgrade u in upgrades)
+        {
+            if (name == u.name) return u;
+        }
         return null;
     }
 }
@@ -56,14 +81,16 @@ public class Upgrade
     public int stacks; //number of times upgraded
     public int rateIncrease; //rate of increase per stack.
     public float increaseValue;
+    public int winsRequired;
 
-    public Upgrade(UpgradeNames name, long basecost, int stacks, int rateIncrease, float increaseValue = 0.1f)
+    public Upgrade(UpgradeNames name, long basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0)
     {
         this.name = name;
         base_cost = basecost;
-        this.stacks = stacks;
+        this.stacks = 0;
         this.rateIncrease = rateIncrease;
         this.increaseValue = increaseValue;
+        this.winsRequired = winsRequired;
         current_cost = CalcCurrentCost();
     }
 

@@ -11,8 +11,11 @@ public class UpgradeButton : MonoBehaviour
     Button button;
     Upgrade theUpgrade;
 
-    public GameObject costLabel; 
+    public GameObject costLabel;
+    public GameObject nameLabel;
     public UpgradeNames upgradeName;
+
+    GameData gameData;
 
     private void Start()
     {
@@ -24,12 +27,19 @@ public class UpgradeButton : MonoBehaviour
 
         if(costLabel == null)
         {
-            transform.Find("Cost");
+            costLabel = transform.Find("Cost").gameObject;
         }
+        if(nameLabel == null)
+        {
+            nameLabel = transform.Find("Label").gameObject;
+            nameLabel.GetComponent<Text>().text = theUpgrade.name.ToString().Replace('_', ' ');
+        }
+        gameData = manager.GetData();
     }
     private void Update()
     {
-        if(manager.GetData().currentPB < theUpgrade.current_cost)
+        
+        if (gameData.currentPB < theUpgrade.current_cost || gameData.currentWins < theUpgrade.winsRequired)
         {
             button.interactable = false;
         }
@@ -37,8 +47,12 @@ public class UpgradeButton : MonoBehaviour
         {
             button.interactable = true;
         }
-
-        costLabel.GetComponent<Text>().text = theUpgrade.current_cost + " PB";
+        string cost = theUpgrade.current_cost + " PB";
+        if(theUpgrade.winsRequired > 0)
+        {
+            cost += "\n" + theUpgrade.winsRequired + " wins";
+        }
+        costLabel.GetComponent<Text>().text = cost;
     }
    /* public void PushedButton(UpgradeNames name, int value)
     {
