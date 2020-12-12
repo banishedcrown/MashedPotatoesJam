@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &76373905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,9 +1498,9 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: e8c405baaad14d44f8324fc181934de1, type: 3}
   bend: 4.5
   scanlineSize1: 500
-  scanlineSpeed1: -5
+  scanlineSpeed1: 10
   scanlineSize2: 400
-  scanlineSpeed2: -4
+  scanlineSpeed2: 2
   scanlineAmount: 0.01
   vignetteSize: 1.9
   vignetteSmoothness: 0.6
@@ -5627,7 +5627,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d8fd21e6fed2d3e4387be180d86fa225, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
