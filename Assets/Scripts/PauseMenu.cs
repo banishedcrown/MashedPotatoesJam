@@ -17,18 +17,18 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        Master.value = PlayerPrefs.GetFloat("Master", 0.75f);
-        Music.value = PlayerPrefs.GetFloat("Music", 0.75f);
-        Effects.value = PlayerPrefs.GetFloat("SFX", 0.75f);
+        Master.value = PlayerPrefs.GetFloat("Master", 1f);
+        Music.value = PlayerPrefs.GetFloat("Music", 1f);
+        Effects.value = PlayerPrefs.GetFloat("SFX", 1f);
     }
 
-    /*void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused)
             {
-                //Resume();
+                Resume();
             }
             else
             {
@@ -41,8 +41,13 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
 
-    }*/
+    void Resume()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
 
     public void SetMaster()
     {
