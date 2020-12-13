@@ -30,14 +30,15 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         PriorTimeScale = Time.timeScale;
-        Time.timeScale = 0f;
+        Time.timeScale = 0;
+        Debug.Log(Time.timeScale);
     }
 
     public void Resume()
     {
         if (PriorTimeScale == 1)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = 1;
         }
 
         //Otherwise do Nothing
