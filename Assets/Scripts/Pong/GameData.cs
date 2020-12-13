@@ -14,9 +14,16 @@ public class GameData
 
     public int prestigeLevel = 0;
     public UpgradeData upgrades;
+    public ProgressData progress;
 
     public GameData(UpgradeData upgrades)
     {
         this.upgrades = upgrades;
+    }
+
+    public GameData(UpgradeData upgrades, ProgressData progress)
+    {
+        this.upgrades = upgrades;
+        this.progress = progress;
     }
 }
