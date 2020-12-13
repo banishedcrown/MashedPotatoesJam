@@ -33,9 +33,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void Resume()
+    public void Resume()
     {
-        if (PriorTimeScale >= 1)
+        if (PriorTimeScale == 1)
         {
             Time.timeScale = 1f;
         }
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
         
     }
 
-    void MainMenu()
+    public void MainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
