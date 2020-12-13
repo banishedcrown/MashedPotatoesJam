@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-
     public Slider Master;
     public Slider Music;
     public Slider Effects;
 
     public AudioMixer MasterVol;
+
+    float PriorTimeScale;
 
     void Start()
     {
@@ -21,32 +21,33 @@ public class PauseMenu : MonoBehaviour
         Music.value = PlayerPrefs.GetFloat("Music", 1f);
         Effects.value = PlayerPrefs.GetFloat("SFX", 1f);
     }
-
-    void Update()
+    
+    void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
+        Pause();
     }
 
     void Pause()
     {
+        PriorTimeScale = Time.timeScale;
         Time.timeScale = 0f;
-        GameIsPaused = true;
     }
 
     void Resume()
     {
+        if (PriorTimeScale >= 1)
+        {
+            Time.timeScale = 1f;
+        }
+
+        //Otherwise do Nothing
+        
+    }
+
+    void MainMenu()
+    {
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        SceneManager.LoadScene(0);
     }
 
     public void SetMaster()
