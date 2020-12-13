@@ -61,7 +61,8 @@ public class PongManager : MonoBehaviour
                 {
                     PlayerScore = 0;
                     EnemyScore = 0;
-                    theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+                    Time.timeScale = 1;
+                    theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);                    
                     gameEnded = false;
                 }
             }
@@ -69,13 +70,14 @@ public class PongManager : MonoBehaviour
             {
                 PlayerScore = 0;
                 EnemyScore = 0;
+                Time.timeScale = 1;
                 theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
                 gameEnded = false;
             }
         }
         else
         {
-            Time.timeScale = 1;
+            
             if (PlayerScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
             {
                 GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
