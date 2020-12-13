@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     GameData data;
     UpgradeData upgrades;
+    ProgressData progress;
 
     TMP_Text CurrentPBLabel;
 
@@ -118,12 +119,12 @@ public class GameManager : MonoBehaviour
 
         //they clicked yes, or no save file. start a new game
         upgrades = new UpgradeData();
-        data = new GameData(upgrades);
+        data = new GameData(upgrades, progress);
         SaveSystem.SaveData(data);
         LoadScene("Pong Scene");
     }
 
-    public void LoadScene(string scene)
+    public static void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
