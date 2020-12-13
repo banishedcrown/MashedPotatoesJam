@@ -21,6 +21,7 @@ public class BallController : MonoBehaviour
 
     GameManager manager;
     SpriteRenderer ballSprite;
+    PongManager pManager; 
 
     void Start()
     {
@@ -29,12 +30,19 @@ public class BallController : MonoBehaviour
         manager = GameManager.GetManager();
         spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         ballSprite = GetComponent<SpriteRenderer>();
+        pManager = transform.parent.GetComponent<PongManager>();
         
         Invoke("GoBall", 2);
     }
 
     void GoBall()
     {
+
+        if(pManager.gameEnded)
+        {
+            Invoke("GoBall", 1);
+            return;
+        }
         Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
         Upgrade ballValue = manager.GetData().upgrades.Ball_Value;
 

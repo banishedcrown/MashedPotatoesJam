@@ -18,7 +18,7 @@ public class PongManager : MonoBehaviour
     GameObject theBall;
     static GameObject managerObject;
     GameManager manager;
-    private bool gameEnded = false;
+    public bool gameEnded = false;
 
     GameObject pongScoreAI;
     GameObject pongScorePlayer;
@@ -54,14 +54,12 @@ public class PongManager : MonoBehaviour
 
         if (gameEnded)
         {
-            Time.timeScale = 0;
             if (autoRestart.stacks == 0)
             {
                 if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
                 {
                     PlayerScore = 0;
                     EnemyScore = 0;
-                    Time.timeScale = 1;
                     theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);                    
                     gameEnded = false;
                 }
@@ -70,7 +68,6 @@ public class PongManager : MonoBehaviour
             {
                 PlayerScore = 0;
                 EnemyScore = 0;
-                Time.timeScale = 1;
                 theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
                 gameEnded = false;
             }

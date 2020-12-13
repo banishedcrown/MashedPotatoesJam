@@ -42,7 +42,7 @@ public class UpgradeData
 
     public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
     public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 1, 5);
-    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Ball_Rally_Multiplier, 50, 5, 1, 25);
+    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Ball_Rally_Multiplier, 50, 5, 1, 25, 1);
     public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Ball_Rally, 10, 3, 0.10f,10);
 
     public Upgrade Pong_Instance_Increase = new Upgrade(UpgradeNames.Pong_Instance_Increase, 250, 10, 1, 10);
@@ -92,11 +92,11 @@ public class Upgrade
     public float increaseValue;
     public int winsRequired;
 
-    public Upgrade(UpgradeNames name, long basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0)
+    public Upgrade(UpgradeNames name, long basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
     {
         this.name = name;
         base_cost = basecost;
-        this.stacks = 0;
+        this.stacks = defaultstacks;
         this.rateIncrease = rateIncrease;
         this.increaseValue = increaseValue;
         this.winsRequired = winsRequired;
