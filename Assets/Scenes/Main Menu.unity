@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 782b0c4314a7a6647a86455e3c64d958, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -301,8 +301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.24, y: -0.000002861}
-  m_SizeDelta: {x: 87.52005, y: 21.880005}
+  m_AnchoredPosition: {x: 1.24, y: -0.0010304}
+  m_SizeDelta: {x: 87.52005, y: 30.002068}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84593597
 MonoBehaviour:
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -547,8 +547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.24, y: -0.000002861}
-  m_SizeDelta: {x: 87.52005, y: 21.880005}
+  m_AnchoredPosition: {x: 1.24, y: 0.0000023842}
+  m_SizeDelta: {x: 87.52005, y: 30.000004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182415031
 MonoBehaviour:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1168,8 +1168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.24, y: -0.000002861}
-  m_SizeDelta: {x: 87.52005, y: 21.880005}
+  m_AnchoredPosition: {x: 0.0000041572, y: 0.0000023842}
+  m_SizeDelta: {x: 90, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749553914
 MonoBehaviour:
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1691,7 +1691,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 01a2ed03002253243a3f7faf19d47475, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2019,7 +2019,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.24, y: -0.000002861}
-  m_SizeDelta: {x: 87.52005, y: 21.880005}
+  m_SizeDelta: {x: 87.52005, y: 29.999996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278725315
 MonoBehaviour:
@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2757,7 +2757,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: d8eb891686b2e3747bd7abe8a344f3e0, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3108,7 +3108,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 910f695dab96c1d4990caba056158c9b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 01a2ed03002253243a3f7faf19d47475, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3963,6 +3963,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 180366695}
     m_Modifications:
+    - target: {fileID: 5157538106688012950, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157538106688012950, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5157538106688012951, guid: a362803386d244e4f92f9d462e64086c, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -3975,6 +3983,10 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
+    - target: {fileID: 5157538106821723050, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
     - target: {fileID: 5157538106821723050, guid: a362803386d244e4f92f9d462e64086c, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
@@ -4115,6 +4127,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 54.997
       objectReference: {fileID: 0}
+    - target: {fileID: 5157538107409253718, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157538107409253718, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5157538107409253719, guid: a362803386d244e4f92f9d462e64086c, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0.0018234253
@@ -4127,6 +4147,10 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: af9b62a7e5d3d56419b53595b2810139, type: 3}
+    - target: {fileID: 5157538108224396822, guid: a362803386d244e4f92f9d462e64086c, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b07a11cbf98d88d4b89fdfb63a0d4108, type: 3}
     - target: {fileID: 5157538108224396822, guid: a362803386d244e4f92f9d462e64086c, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
