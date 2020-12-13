@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class UpgradeButton : MonoBehaviour
         if(nameLabel == null)
         {
             nameLabel = transform.Find("Label").gameObject;
-            nameLabel.GetComponent<Text>().text = theUpgrade.name.ToString().Replace('_', ' ');
+            nameLabel.GetComponent<TMP_Text>().text = theUpgrade.name.ToString().Replace('_', ' ');
         }
         gameData = manager.GetData();
     }
@@ -52,7 +53,7 @@ public class UpgradeButton : MonoBehaviour
         {
             cost += "\n" + theUpgrade.winsRequired + " wins";
         }
-        costLabel.GetComponent<Text>().text = cost;
+        costLabel.GetComponent<TMP_Text>().text = cost;
     }
    /* public void PushedButton(UpgradeNames name, int value)
     {
