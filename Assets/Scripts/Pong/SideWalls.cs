@@ -9,8 +9,9 @@ public class SideWalls : MonoBehaviour
         if (hitInfo.name == "Ball")
         {
             string wallName = transform.name;
-            //PongManager.Score(wallName);
-            //hitInfo.gameObject.SendMessage("RestartGame", 1.0f, SendMessageOptions.RequireReceiver);
+            BallController b = hitInfo.gameObject.GetComponent<BallController>();
+            PongManager.Score(b, wallName, b.type);
+            hitInfo.gameObject.SendMessage("RestartGame", 1.0f, SendMessageOptions.RequireReceiver);
         }
     }
 }

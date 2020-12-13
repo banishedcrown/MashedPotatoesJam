@@ -96,12 +96,12 @@ public class PongManager : MonoBehaviour
         if (wallID == "RightWall")
         {
             PlayerScore++;
-            managerObject.SendMessage("AddPB", ((long)ball.currentValue) *(1+baseBall.stacks*baseBall.increaseValue));
+            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) *(1+baseBall.stacks*baseBall.increaseValue)));
         }
         else
         {
             EnemyScore++;
-            managerObject.SendMessage("AddPB", ((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue));
+            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
         }
             
     }

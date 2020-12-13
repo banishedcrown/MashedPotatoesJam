@@ -7,7 +7,7 @@ public class BallController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private BallTypes type;
+    public BallTypes type;
 
     public AudioClip score;
     public AudioClip PaddleBounce;
@@ -17,7 +17,7 @@ public class BallController : MonoBehaviour
     private Vector3 spawnPoint;
     private AudioSource audioSource;
 
-    public float currentValue = 0;
+    public float currentValue = 1;
 
     GameManager manager;
     SpriteRenderer ballSprite;
@@ -29,25 +29,31 @@ public class BallController : MonoBehaviour
         manager = GameManager.GetManager();
         spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         ballSprite = GetComponent<SpriteRenderer>();
+        
         Invoke("GoBall", 2);
     }
 
     void GoBall()
     {
         Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
-        var x = Random.Range(-1f, 1f);
-        var y = Random.Range(-x, x);
+        Upgrade ballValue = manager.GetData().upgrades.Ball_Value;
+
+        currentValue = 1 + ballValue.stacks * ballValue.increaseValue;
+
+        var x = Random.Range(0, 1);
+        x = x == 0 ? -1 : 1;
+        var y = Random.Range(-1f, 1f);
 
         Vector2 dir = new Vector2(x, y);
         float rand = Random.Range(0, 2);
 
         if (ballSpeed.stacks > 0)
         {
-            rb2d.velocity = (dir * (3 + ballSpeed.increaseValue * ballSpeed.stacks));
+            rb2d.velocity = (dir * (5 + ballSpeed.increaseValue * ballSpeed.stacks));
         }
         else
         {
-            rb2d.velocity = dir * 3;
+            rb2d.velocity = dir * 5;
         }
 
         audioSource.PlayOneShot(PaddleBounce);
