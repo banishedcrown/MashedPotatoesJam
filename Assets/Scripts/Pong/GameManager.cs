@@ -143,6 +143,14 @@ public class GameManager : MonoBehaviour
         SaveSystem.SaveData(data);
     }
 
+    public void AddWin(long value)
+    {
+        this.data.currentWins += value;
+        this.data.totalWins += value;
+        Debug.Log("current wins: " + this.data.currentWins);
+        SaveSystem.SaveData(data);
+    }
+
     public GameData GetData()
     {
         return this.data;

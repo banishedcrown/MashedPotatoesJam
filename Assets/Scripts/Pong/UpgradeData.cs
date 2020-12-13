@@ -41,7 +41,7 @@ public class UpgradeData
     public Upgrade AI_Enemy = new Upgrade(UpgradeNames.AI_Enemy, 10, 5, 0.5f);
 
     public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
-    public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 0.25f, 5);
+    public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 1, 5);
     public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Ball_Rally_Multiplier, 50, 5, 1, 25);
     public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Ball_Rally, 10, 3, 0.10f,10);
 

@@ -119,7 +119,8 @@ public class BallController : MonoBehaviour
     {
         Upgrade ballRally = manager.GetData().upgrades.Ball_Rally;
         float rallyChance = ballRally.stacks * ballRally.increaseValue;
-        if(Random.Range(0f,1f) < rallyChance)
+        float rand = Random.Range(0f, 1f);
+        if (rand < rallyChance)
         {
             return BallTypes.RALLY;
         }

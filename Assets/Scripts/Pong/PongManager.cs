@@ -54,6 +54,7 @@ public class PongManager : MonoBehaviour
 
         if (gameEnded)
         {
+            Time.timeScale = 0;
             if (autoRestart.stacks == 0)
             {
                 if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
@@ -72,20 +73,25 @@ public class PongManager : MonoBehaviour
                 gameEnded = false;
             }
         }
-
-        if (PlayerScore == 5 + scoreLimit.stacks*scoreLimit.increaseValue)
+        else
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
-            theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
-            gameEnded = true;
-        }
-        else if (EnemyScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
-            theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
-            gameEnded = true;
-        }
+            Time.timeScale = 1;
+            if (PlayerScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
+            {
+                GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
+                theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
+                gameEnded = true;
+            }
+            else if (EnemyScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
+            {
+                GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
 
+                if (!gameEnded) manager.AddWin(1);
+
+                theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
+                gameEnded = true;
+            }
+        }
         
     }
 
