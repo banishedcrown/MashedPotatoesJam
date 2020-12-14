@@ -10,8 +10,13 @@ public class GameManager : MonoBehaviour
     ProgressData progress;
 
     TMP_Text CurrentPBLabel;
+    TMP_Text CurrentWinLabel;
 
     public GameObject OverwritePrompt;
+
+    GameObject OptionsPanel;
+
+    AudioClip music; 
 
     public int alterMoney = 0;
     bool inGame = false;
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+            OptionsPanel = GameObject.Find("Options Panel");
             
         }
         else
@@ -59,7 +65,8 @@ public class GameManager : MonoBehaviour
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
-
+            CurrentWinLabel = GameObject.Find("CurrentWins").GetComponent<TMP_Text>();
+            OptionsPanel = GameObject.Find("Options Panel");
         }
         else
         {
@@ -76,19 +83,59 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    private void OnGUI()
+    private void LateUpdate()
     {
-        if(inGame)
+        if (inGame)
         {
-            CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-            if (alterMoney != 0)
+            long maxPongScore = 5 + (long)(data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
+            long maxPB = data.currentPB;
+            long maxWins = data.currentWins;
+
+            int maxBits = data.progress.numBits;
+            int maxCores = data.progress.numCores;
+
+            double maxNum = System.Math.Pow(2, maxBits);
+
+            if (maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore)
             {
-                AddPB(alterMoney);
-                alterMoney = 0;
+                LoadScene("Upgrade Process");
+            }
+
+            if(data.upgrades.Unlock_Music.stacks > 0)
+            {
+                AudioSource source = GetComponent<AudioSource>();
+                source.loop = true;
+                source.clip = music;
+                source.Play();
             }
         }
 
+    }
+
+    private void OnGUI()
+    {
+        if (inGame)
+        {
+            if (data.currentWins > 5)
+            {
+
+                CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+                CurrentWinLabel.text = "WINS: " + data.currentWins;
+                OptionsPanel.SetActive(true);
+
+            }
+            else
+            {
+                CurrentPBLabel.text = "";
+                OptionsPanel.SetActive(false);
+            }
+        }
+
+        if (alterMoney != 0)
+        {
+            AddPB(alterMoney);
+            alterMoney = 0;
+        }
     }
 
     public void LoadGame()
@@ -119,6 +166,7 @@ public class GameManager : MonoBehaviour
 
         //they clicked yes, or no save file. start a new game
         upgrades = new UpgradeData();
+        progress = new ProgressData();
         data = new GameData(upgrades, progress);
         SaveSystem.SaveData(data);
         LoadScene("Pong Scene");

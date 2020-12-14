@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 
-[System.Serializable]
-public class ProgressData : MonoBehaviour
+[Serializable]
+public class ProgressData
 {
     // Start is called before the first frame update
 
