@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject OverwritePrompt;
 
+    GameObject OptionsPanel;
+
     public int alterMoney = 0;
     bool inGame = false;
     private void Awake()
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
+            OptionsPanel = GameObject.Find("Options Panel");
             
         }
         else
@@ -76,19 +79,45 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        long maxPongScore = 5 + (long) (data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
+        long maxPB = data.currentPB;
+        long maxWins = data.currentWins;
+
+        int maxBits = data.progress.numBits;
+        int maxCores = data.progress.numCores;
+
+        double maxNum = System.Math.Pow(2, maxBits);
+
+        if(maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore)
+        {
+            LoadScene("Upgrade Process");
+        }
+
+    }
 
     private void OnGUI()
     {
-        if(inGame)
+        if (data.currentPB > 5)
         {
-            CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-            if (alterMoney != 0)
+            if (inGame)
             {
-                AddPB(alterMoney);
-                alterMoney = 0;
+                CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+                OptionsPanel.SetActive(true);
             }
         }
+        else
+        {
+            CurrentPBLabel.text = "";
+            OptionsPanel.SetActive(false);
+        }
 
+        if (alterMoney != 0)
+        {
+            AddPB(alterMoney);
+            alterMoney = 0;
+        }
     }
 
     public void LoadGame()
