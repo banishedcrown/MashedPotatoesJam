@@ -19,7 +19,7 @@ public class UpgradesScript : MonoBehaviour
 
         if ((bitandcore) == 0)
         {
-            if ((bits + core) == 1)
+            if ((bits + core) == 0)
             {
                 num = 0;
             }
