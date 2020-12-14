@@ -75,7 +75,9 @@ public class UpgradeData
             Pong_Set_Speed,
             Pong_Score_Limit,
             Pong_Auto_Resart,
-            Misc_Loss };
+            Misc_Loss,
+            Unlock_Music
+         };
 
         foreach(Upgrade u in upgrades)
         {

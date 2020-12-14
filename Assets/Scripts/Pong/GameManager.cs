@@ -116,19 +116,19 @@ public class GameManager : MonoBehaviour
     {
         if (inGame)
         {
-            if (data.currentWins > 5)
+            if (data.currentWins >= 1)
             {
 
                 CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-                CurrentWinLabel.text = "WINS: " + data.currentWins;
                 OptionsPanel.SetActive(true);
-
             }
             else
             {
                 CurrentPBLabel.text = "";
                 OptionsPanel.SetActive(false);
             }
+
+            CurrentWinLabel.text = "WINS: " + data.currentWins;
         }
 
         if (alterMoney != 0)

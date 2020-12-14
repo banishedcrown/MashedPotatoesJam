@@ -138,6 +138,30 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 247348169}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 247348168}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826785, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5220288675693517072, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -228,6 +252,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+--- !u!1 &247348168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5220288673947354724, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+  m_PrefabInstance: {fileID: 247348167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &247348169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5220288674432487927, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+  m_PrefabInstance: {fileID: 247348167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
