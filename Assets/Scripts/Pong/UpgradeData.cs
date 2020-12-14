@@ -21,6 +21,7 @@ public enum UpgradeNames {
 
     Pong_Instance_Increase,
     Secret_Upgrade, //loss
+    Unlock_Music
 };
 
 public enum BallTypes
@@ -37,7 +38,7 @@ public class UpgradeData
     //level of upgrades for each upgrade
     public Upgrade Player_Paddle_Size = new Upgrade(UpgradeNames.Player_Paddle_Size, 1, 2, 0.2f);
     public Upgrade Player_Speed = new Upgrade(UpgradeNames.Player_Speed, 2, 3, 0.05f);
-    public Upgrade AI_Player = new Upgrade(UpgradeNames.AI_Player, 25, 10, 0.5f, 2);
+    public Upgrade AI_Player = new Upgrade(UpgradeNames.AI_Player, 25, 10, 0.5f, 3);
     public Upgrade AI_Enemy = new Upgrade(UpgradeNames.AI_Enemy, 10, 5, 0.5f);
 
     public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
@@ -49,6 +50,8 @@ public class UpgradeData
     public Upgrade Pong_Set_Speed = new Upgrade(UpgradeNames.Pong_Set_Speed, 10, 4, 0.25f);
     public Upgrade Pong_Score_Limit = new Upgrade(UpgradeNames.Pong_Score_Limit, 10, 4, 5);
     public Upgrade Pong_Auto_Resart = new Upgrade(UpgradeNames.Pong_Auto_Resart, 200, 0, 0, 20);
+
+    public Upgrade Unlock_Music = new Upgrade(UpgradeNames.Unlock_Music, 20, 0, 0, 1);
 
     public Upgrade Misc_Loss = new Upgrade(UpgradeNames.Secret_Upgrade, 10000, 0, 0, 100);
 
