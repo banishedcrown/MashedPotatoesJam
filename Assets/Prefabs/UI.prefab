@@ -3212,7 +3212,7 @@ MonoBehaviour:
   m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -3224,7 +3224,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -7982,7 +7982,7 @@ MonoBehaviour:
   Master: {fileID: 2776672852616916964}
   Music: {fileID: 2803468526718257630}
   Effects: {fileID: 3672781169061708090}
-  MasterVol: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
+  Mixer: {fileID: 0}
 --- !u!1 &7523271831341577120
 GameObject:
   m_ObjectHideFlags: 0

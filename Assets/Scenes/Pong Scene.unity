@@ -269,6 +269,18 @@ PrefabInstance:
       propertyPath: Mixer
       value: 
       objectReference: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
+    - target: {fileID: 5220288674432487927, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826784, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030253
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220288674801826784, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5220288675693517072, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -356,6 +368,14 @@ PrefabInstance:
     - target: {fileID: 5220288675693517076, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352199179879004511, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352199179879004511, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 358
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73534b9007ea810478a22891d02506b2, type: 3}
