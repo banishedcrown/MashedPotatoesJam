@@ -265,6 +265,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4075221530751101824, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: Mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
     - target: {fileID: 5220288675693517072, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
