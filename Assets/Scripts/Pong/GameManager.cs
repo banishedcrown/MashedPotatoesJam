@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     GameObject OptionsPanel;
 
-    AudioClip music; 
+    public AudioClip music; 
 
     public int alterMoney = 0;
     bool inGame = false;
@@ -104,9 +104,13 @@ public class GameManager : MonoBehaviour
             if(data.upgrades.Unlock_Music.stacks > 0)
             {
                 AudioSource source = GetComponent<AudioSource>();
-                source.loop = true;
-                source.clip = music;
-                source.Play();
+                if (source.isPlaying == false)
+                {
+                    source.loop = true;
+                    source.clip = music;
+
+                    source.Play();
+                }
             }
         }
 
