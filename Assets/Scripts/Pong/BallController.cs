@@ -64,6 +64,7 @@ public class BallController : MonoBehaviour
             rb2d.velocity = dir * 5;
         }
 
+        rb2d.velocity *= transform.parent.localScale;
         audioSource.PlayOneShot(PaddleBounce);
     }
     void ResetBall()

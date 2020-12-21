@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private bool useAI = false;
 
+    private float startY;
+
     GameManager manager;
 
     void Start()
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         targetY = transform.position.y;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        startY = transform.position.y;
     }
 
     // Update is called once per frame
@@ -49,14 +52,15 @@ public class PlayerController : MonoBehaviour
         rb2d.velocity = vel;
 
         var pos = transform.position;
+        float Boundcheck = boundY * transform.parent.localScale.y;
         //pos.y = targetY;
-        if (pos.y > boundY)
+        if (pos.y > startY + Boundcheck)
         {
-            pos.y = boundY;
+            pos.y = startY + Boundcheck;
         }
-        else if (pos.y < -boundY)
+        else if (pos.y < startY - Boundcheck)
         {
-            pos.y = -boundY;
+            pos.y = startY - Boundcheck;
         }
         transform.position = pos;
     }
