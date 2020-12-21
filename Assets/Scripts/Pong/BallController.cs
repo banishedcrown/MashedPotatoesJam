@@ -19,6 +19,9 @@ public class BallController : MonoBehaviour
 
     public float currentValue = 1;
 
+    float BoundY = 3;
+    float BoundX = 9;
+
     GameManager manager;
     SpriteRenderer ballSprite;
     PongManager pManager; 
@@ -33,6 +36,25 @@ public class BallController : MonoBehaviour
         pManager = transform.parent.GetComponent<PongManager>();
         
         Invoke("GoBall", 2);
+    }
+
+    private void LateUpdate()
+    {
+        Vector2 position = transform.position;
+
+        Vector3 pScale = transform.parent.localScale;
+
+        if (position.y > spawnPoint.y + BoundY * transform.parent.localScale.y || position.y < spawnPoint.y - BoundY * transform.parent.localScale.y)
+        {
+            transform.position = spawnPoint;
+        }
+        else
+        {
+            if (position.x > spawnPoint.y + BoundX * transform.parent.localScale.x || position.x < spawnPoint.x - BoundX * transform.parent.localScale.x)
+            {
+                transform.position = spawnPoint;
+            }
+        }
     }
 
     void GoBall()
