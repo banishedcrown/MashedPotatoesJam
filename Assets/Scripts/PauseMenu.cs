@@ -11,20 +11,31 @@ public class PauseMenu : MonoBehaviour
     public Slider Music;
     public Slider Effects;
 
-    public AudioMixer MasterVol;
+    public AudioMixer Mixer;
 
     float PriorTimeScale;
 
     void Start()
     {
-        Master.value = PlayerPrefs.GetFloat("Master", 1f);
-        Music.value = PlayerPrefs.GetFloat("Music", 1f);
-        Effects.value = PlayerPrefs.GetFloat("SFX", 1f);
+        float CurrentMaster = 1f;
+        float CurrentMusic = 1f;
+        float CurrentSFX = 1f;
+
+        Mixer.GetFloat("MasterVol", out CurrentMaster);
+        Master.value = Mathf.Pow(10, (CurrentMaster/ 20));
+
+        Mixer.GetFloat("MusicVol", out CurrentMusic);
+        Music.value = Mathf.Pow(10, (CurrentMusic / 20));
+
+        Mixer.GetFloat("SFXVol", out CurrentSFX);
+        Effects.value = Mathf.Pow(10, (CurrentSFX / 20));
+
     }
     
     void OnEnable()
     {
         Pause();
+
     }
 
     void Pause()
@@ -54,21 +65,21 @@ public class PauseMenu : MonoBehaviour
     public void SetMaster()
     {
         float sliderValue = Master.value;
-        MasterVol.SetFloat("MasterVol", Mathf.Log10(sliderValue) * 20);
+        Mixer.SetFloat("MasterVol", Mathf.Log10(sliderValue) * 20);
         PlayerPrefs.SetFloat("MasterVol", sliderValue);
     }
 
     public void SetMusic()
     {
         float sliderValue = Music.value;
-        MasterVol.SetFloat ("MusicVol", Mathf.Log10(sliderValue) * 20);
+        Mixer.SetFloat ("MusicVol", Mathf.Log10(sliderValue) * 20);
         PlayerPrefs.SetFloat("MusicVol", sliderValue);
     }
 
     public void SetSFX()
     {
         float sliderValue = Effects.value;
-        MasterVol.SetFloat ("SFXVol", Mathf.Log10(sliderValue) * 20);
+        Mixer.SetFloat ("SFXVol", Mathf.Log10(sliderValue) * 20);
         PlayerPrefs.SetFloat("SFXVol", sliderValue);
     }
 }
