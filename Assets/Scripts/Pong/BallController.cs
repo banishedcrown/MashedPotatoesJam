@@ -19,8 +19,8 @@ public class BallController : MonoBehaviour
 
     public float currentValue = 1;
 
-    float BoundY = 3;
-    float BoundX = 9;
+    float BoundY = 5;
+    float BoundX = 10;
 
     GameManager manager;
     SpriteRenderer ballSprite;
@@ -40,17 +40,17 @@ public class BallController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector2 position = transform.position;
+        Vector2 position = transform.localPosition;
 
         Vector3 pScale = transform.parent.localScale;
 
-        if (position.y > spawnPoint.y + BoundY * transform.parent.localScale.y || position.y < spawnPoint.y - BoundY * transform.parent.localScale.y)
+        if (position.y > BoundY || position.y < - BoundY )
         {
             transform.position = spawnPoint;
         }
         else
         {
-            if (position.x > spawnPoint.y + BoundX * transform.parent.localScale.x || position.x < spawnPoint.x - BoundX * transform.parent.localScale.x)
+            if (position.x > BoundX || position.x < -BoundX)
             {
                 transform.position = spawnPoint;
             }
