@@ -54,6 +54,13 @@ public class Link : MonoBehaviour
 		#endif
 	}
 
+	public void RFH()
+	{
+	#if !UNITY_EDITOR
+		openWindow("https://banishedcrown.itch.io/rfh");
+	#endif
+	}
+
 	[DllImport("__Internal")]
 	private static extern void openWindow(string url);
 

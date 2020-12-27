@@ -8,8 +8,8 @@ public class ProgressData
     public int coreLevel = 0;
     public int bitLevel = 0;
 
-    int[] coreTypes = {1,2, 4, 8, 16};
-    int[] bitTypes = { 4, 8, 16, 32 };
+    int[] coreTypes = { 1, 2, 4, 8, 16 };
+    int[] bitTypes = { 4, 8, 16, 32, 64 };
 
     public int numCores = 1;
     public int numBits = 4;
