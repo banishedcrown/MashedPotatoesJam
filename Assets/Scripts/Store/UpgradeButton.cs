@@ -16,6 +16,8 @@ public class UpgradeButton : MonoBehaviour
     public GameObject nameLabel;
     public UpgradeNames upgradeName;
 
+    public GameObject toggleButton;
+
     GameData gameData;
 
     private void Start()
@@ -39,7 +41,7 @@ public class UpgradeButton : MonoBehaviour
     }
     private void Update()
     {
-        print(theUpgrade + "," + gameObject.name + ", " + upgradeName);
+        //print(theUpgrade + "," + gameObject.name + ", " + upgradeName);
         if (gameData.currentPB < theUpgrade.current_cost || gameData.currentWins < theUpgrade.winsRequired)
         {
             button.interactable = false;
@@ -69,6 +71,30 @@ public class UpgradeButton : MonoBehaviour
     {
         manager.RemovePB(theUpgrade.current_cost);
         theUpgrade.addStack(1);
+        if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
+        {
+            if (theUpgrade.stacks > 0)
+                toggleButton.SetActive(true);
+            else
+            {
+                toggleButton.SetActive(false);
+            }
+        }
+
     }
-    
+
+    private void OnEnable()
+    {
+        if(theUpgrade != null)
+        if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
+        {
+            if(theUpgrade.stacks > 0)
+                toggleButton.SetActive(true);
+            else
+            {
+                toggleButton.SetActive(false);
+            }
+        }
+    }
+
 }

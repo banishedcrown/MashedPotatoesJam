@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public AudioClip music; 
 
     public int alterMoney = 0;
+    public int alterWins = 0;
     bool inGame = false;
     private void Awake()
     {
@@ -137,8 +138,13 @@ public class GameManager : MonoBehaviour
 
         if (alterMoney != 0)
         {
-            AddPB(alterMoney);
-            alterMoney = 0;
+            data.currentPB = alterMoney;
+            
+        }
+        if (alterWins != 0)
+        {
+            data.currentWins = alterWins;
+
         }
     }
 

@@ -46,6 +46,15 @@ public class PongManager : MonoBehaviour
         autoRestart = manager.GetData().upgrades.Pong_Auto_Resart;
     }
 
+    private void OnEnable()
+    {
+        PlayerScore = 0;
+        EnemyScore = 0;
+        if(theBall != null)
+            theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+        gameEnded = false;
+    }
+
     void OnGUI()
     {
         GUI.skin = layout;

@@ -13,7 +13,9 @@ public class StoreController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        GameObject.Find("Options Panel").SetActive(false);
+        GameObject g = GameObject.Find("Options Panel");
+        if(g != null)
+            g.SetActive(false);
     }
 
     private void OnDisable()
