@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            SceneManager.sceneLoaded += OnLevelLoaded;
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,16 +62,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "Pong Scene")
+        if (scene.name == "Pong Scene")
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
             CurrentWinLabel = GameObject.Find("CurrentWins").GetComponent<TMP_Text>();
             OptionsPanel = GameObject.Find("Options Panel");
         }
-        else
+        else if(scene.name == "Main Menu")
         {
             inGame = false;
             Button button = GameObject.Find("Load").GetComponent<Button>();

@@ -123,23 +123,25 @@ public class PlayerController : MonoBehaviour
     }
     GameObject getClosestBall()
     {
-        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
         float minDistance = float.PositiveInfinity;
         Vector3 minPos = Vector3.zero;
         GameObject ball = null;
         Upgrade theUpgrade = manager.GetData().upgrades.AI_Player;
 
-        foreach (GameObject g in balls)
+        foreach (Transform t in transform.parent)
         {
-            if (g.transform.position.x > 0 + theUpgrade.stacks * theUpgrade.increaseValue)
-            {
-                float dist = Vector2.Distance(transform.position, g.transform.position);
-                if (dist < minDistance)
+            if (t.CompareTag("Ball")) { 
+                GameObject g = t.gameObject;
+                if (g.transform.position.x > 0 + theUpgrade.stacks * theUpgrade.increaseValue)
                 {
+                    float dist = Vector2.Distance(transform.position, g.transform.position);
+                    if (dist < minDistance)
+                    {
 
-                    minPos = g.transform.position;
-                    minDistance = dist;
-                    ball = g;
+                        minPos = g.transform.position;
+                        minDistance = dist;
+                        ball = g;
+                    }
                 }
             }
         }
