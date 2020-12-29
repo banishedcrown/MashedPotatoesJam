@@ -19,6 +19,9 @@ public class BallController : MonoBehaviour
 
     public float currentValue = 1;
 
+    public bool instancedBall = true;
+    bool inFocus = true;
+
     float BoundY = 5;
     float BoundX = 10;
 
@@ -55,6 +58,15 @@ public class BallController : MonoBehaviour
                 transform.position = spawnPoint;
             }
         }
+
+        if (transform.parent.localPosition == Vector3.zero)
+        {
+            inFocus = true;
+        }
+        else
+        {
+            inFocus = false;
+        }
     }
 
     void GoBall()
@@ -87,7 +99,7 @@ public class BallController : MonoBehaviour
         }
 
         rb2d.velocity *= transform.parent.localScale;
-        audioSource.PlayOneShot(PaddleBounce);
+        if(inFocus) audioSource.PlayOneShot(PaddleBounce);
     }
     void ResetBall()
     {
@@ -110,7 +122,7 @@ public class BallController : MonoBehaviour
         Upgrade setSpeed = manager.GetData().upgrades.Pong_Set_Speed;
         ResetBall();
         Invoke("GoBall", 1 *(1 - setSpeed.stacks*setSpeed.increaseValue));
-        audioSource.PlayOneShot(score);
+        if (inFocus) audioSource.PlayOneShot(score);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -121,7 +133,7 @@ public class BallController : MonoBehaviour
             vel.x = rb2d.velocity.x;
             vel.y = (rb2d.velocity.y) + (coll.collider.attachedRigidbody.velocity.y / 3);
             rb2d.velocity = vel;
-            audioSource.PlayOneShot(PaddleBounce);
+            if (inFocus) audioSource.PlayOneShot(PaddleBounce);
             
         }
         else
@@ -129,7 +141,7 @@ public class BallController : MonoBehaviour
             if (coll.collider.CompareTag("Wall"))
             {
 
-                audioSource.PlayOneShot(EdgeBounce);
+                if (inFocus) audioSource.PlayOneShot(EdgeBounce);
                 
             }
             if (coll.collider.CompareTag("Goal"))
