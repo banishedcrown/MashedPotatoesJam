@@ -138,6 +138,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 14
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &342428481
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +994,7 @@ GameObject:
   - component: {fileID: 890694052398942082}
   - component: {fileID: 2628921445245855422}
   m_Layer: 5
-  m_Name: RightRotate
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,7 +1100,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 890694052398942082}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 247348169}
+        m_TargetAssemblyTypeName: InstanceNavigation, Assembly-CSharp
+        m_MethodName: ChangeInstance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &828697221355791502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,9 +1998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7625891200500106475}
-  - component: {fileID: 7407791174751827216}
-  - component: {fileID: 621373210775745280}
-  - component: {fileID: 1542730462358119718}
+  - component: {fileID: 247348169}
   m_Layer: 5
   m_Name: Navigation Control
   m_TagString: Untagged
@@ -2016,28 +2027,7 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: 224.88887}
   m_SizeDelta: {x: 900, y: 506}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!223 &7407791174751827216
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534261002466754244}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!114 &621373210775745280
+--- !u!114 &247348169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2046,36 +2036,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534261002466754244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Script: {fileID: 11500000, guid: f4a550ca86111a944baf668d906250ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!114 &1542730462358119718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534261002466754244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &1543346172963570544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5569,6 +5532,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 2
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674154317887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,6 +5671,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 1
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674432487927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5947,6 +5912,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 7
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674644510250
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,6 +6051,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 5
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674801826791
 GameObject:
   m_ObjectHideFlags: 0
@@ -6367,6 +6334,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 8
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674896896802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6505,6 +6473,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 10
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288674994099284
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,6 +6612,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 11
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288675007559773
 GameObject:
   m_ObjectHideFlags: 0
@@ -6915,6 +6885,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 12
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 7860849196286190837, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
 --- !u!1 &5220288675180386159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7197,6 +7168,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 6
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288675693517076
 GameObject:
   m_ObjectHideFlags: 0
@@ -7440,6 +7412,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 13
   toggleButton: {fileID: 1387470992}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288675906221723
 GameObject:
   m_ObjectHideFlags: 0
@@ -7578,6 +7551,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 9
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5220288676029399825
 GameObject:
   m_ObjectHideFlags: 0
@@ -7716,6 +7690,7 @@ MonoBehaviour:
   nameLabel: {fileID: 0}
   upgradeName: 3
   toggleButton: {fileID: 0}
+  pongPrefab: {fileID: 0}
 --- !u!1 &5448448273364263656
 GameObject:
   m_ObjectHideFlags: 0
@@ -9879,7 +9854,7 @@ GameObject:
   - component: {fileID: 7077078353917898691}
   - component: {fileID: 5631762614933265999}
   m_Layer: 5
-  m_Name: Left Rotate
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9985,7 +9960,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7077078353917898691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 247348169}
+        m_TargetAssemblyTypeName: InstanceNavigation, Assembly-CSharp
+        m_MethodName: ChangeInstance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9200326543280072960
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,6 +84,10 @@ public class GameManager : MonoBehaviour
                 button.interactable = false;
             }
         }
+        else
+        {
+            inGame = false;
+        }
     }
 
     private void LateUpdate()

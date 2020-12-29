@@ -17,6 +17,7 @@ public class UpgradeButton : MonoBehaviour
     public UpgradeNames upgradeName;
 
     public GameObject toggleButton;
+    public GameObject pongPrefab;
 
     GameData gameData;
 
@@ -71,30 +72,46 @@ public class UpgradeButton : MonoBehaviour
     {
         manager.RemovePB(theUpgrade.current_cost);
         theUpgrade.addStack(1);
-        if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
-        {
-            if (theUpgrade.stacks > 0)
-                toggleButton.SetActive(true);
-            else
-            {
-                toggleButton.SetActive(false);
-            }
-        }
-
+        UpdateUgrades();
     }
 
     private void OnEnable()
     {
-        if(theUpgrade != null)
-        if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
+        UpdateUgrades();
+    }
+
+
+    void UpdateUgrades()
+    {
+        if (theUpgrade != null)
         {
-            if(theUpgrade.stacks > 0)
-                toggleButton.SetActive(true);
-            else
+            if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
             {
-                toggleButton.SetActive(false);
+                if (theUpgrade.stacks > 0)
+                    toggleButton.SetActive(true);
+                else
+                {
+                    toggleButton.SetActive(false);
+                }
+            }
+            if (theUpgrade.name == UpgradeNames.Pong_Instance_Increase)
+            {
+                int count = 0;
+                GameObject instances = GameObject.Find("Instances");
+                foreach (Transform t in instances.transform)
+                {
+                    if (t.name.StartsWith("Pong"))
+                        count++;
+                }
+                for (int c = count; c <= theUpgrade.stacks; c++)
+                {
+                    GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
+                    Vector3 pos = Vector3.zero;
+                    pos.x = 20 * c;
+                    g.transform.position = pos;
+
+                }
             }
         }
     }
-
 }
