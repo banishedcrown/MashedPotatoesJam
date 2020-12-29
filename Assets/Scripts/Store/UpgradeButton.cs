@@ -96,21 +96,7 @@ public class UpgradeButton : MonoBehaviour
             }
             if (theUpgrade.name == UpgradeNames.Pong_Instance_Increase)
             {
-                int count = 0;
-                GameObject instances = GameObject.Find("Instances");
-                foreach (Transform t in instances.transform)
-                {
-                    if (t.name.StartsWith("Pong"))
-                        count++;
-                }
-                for (int c = count; c <= theUpgrade.stacks; c++)
-                {
-                    GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
-                    Vector3 pos = Vector3.zero;
-                    pos.x = 20 * c;
-                    g.transform.position = pos;
-
-                }
+                GameManager.InitializeInstances(pongPrefab);
             }
         }
     }

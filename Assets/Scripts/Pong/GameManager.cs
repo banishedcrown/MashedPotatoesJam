@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     TMP_Text CurrentWinLabel;
 
     public GameObject OverwritePrompt;
+    public GameObject pongPrefab;
 
     GameObject OptionsPanel;
 
@@ -39,27 +40,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        if (SceneManager.GetActiveScene().name == "Pong Scene")
-        {
-            inGame = true;
-            CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
-            OptionsPanel = GameObject.Find("Options Panel");
-            
-        }
-        else
-        {
-            inGame = false;
-            Button button = GameObject.Find("Load").GetComponent<Button>();
-            if (SaveSystem.SaveExists())
-            {
-                button.interactable = true;
-            }
-            else
-            {
-                button.interactable = false;
-            }
-        }
+
+        OnLevelLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
@@ -70,6 +52,7 @@ public class GameManager : MonoBehaviour
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
             CurrentWinLabel = GameObject.Find("CurrentWins").GetComponent<TMP_Text>();
             OptionsPanel = GameObject.Find("Options Panel");
+            InitializeInstances(pongPrefab);
         }
         else if(scene.name == "Main Menu")
         {
@@ -224,5 +207,26 @@ public class GameManager : MonoBehaviour
     public static GameManager GetManager()
     {
         return GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+    }
+
+    public static void InitializeInstances(GameObject pongPrefab)
+    {
+        Upgrade theUpgrade = GameManager.GetManager().GetData().upgrades.Pong_Instance_Increase;
+
+        int count = 0;
+        GameObject instances = GameObject.Find("Instances");
+        foreach (Transform t in instances.transform)
+        {
+            if (t.name.StartsWith("Pong"))
+                count++;
+        }
+        for (int c = count; c <= theUpgrade.stacks; c++)
+        {
+            GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
+            Vector3 pos = Vector3.zero;
+            pos.x = 20 * c;
+            g.transform.position = pos;
+
+        }
     }
 }

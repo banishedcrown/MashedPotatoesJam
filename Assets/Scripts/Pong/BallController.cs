@@ -34,7 +34,7 @@ public class BallController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         manager = GameManager.GetManager();
-        spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
+        spawnPoint = transform.parent.Find("Ball Spawn").transform.localPosition;
         ballSprite = GetComponent<SpriteRenderer>();
         pManager = transform.parent.GetComponent<PongManager>();
         
@@ -49,13 +49,13 @@ public class BallController : MonoBehaviour
 
         if (position.y > BoundY || position.y < - BoundY )
         {
-            transform.position = spawnPoint;
+            transform.localPosition = spawnPoint;
         }
         else
         {
             if (position.x > BoundX || position.x < -BoundX)
             {
-                transform.position = spawnPoint;
+                transform.localPosition = spawnPoint;
             }
         }
 
