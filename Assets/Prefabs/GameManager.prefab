@@ -47,6 +47,7 @@ MonoBehaviour:
   OverwritePrompt: {fileID: 0}
   music: {fileID: 8300000, guid: 8fd2dceab93d77e48aa89797c0697083, type: 3}
   alterMoney: 0
+  alterWins: 0
 --- !u!82 &705764901023466980
 AudioSource:
   m_ObjectHideFlags: 0
