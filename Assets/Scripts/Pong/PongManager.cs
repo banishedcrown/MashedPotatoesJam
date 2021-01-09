@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PongManager : MonoBehaviour
 {
-    public static int PlayerScore = 0;
-    public static int EnemyScore = 0;
+    public int PlayerScore = 0;
+    public int EnemyScore = 0;
 
     public int xPosition1 = -120;
     public int xPosition2 = 150;
@@ -24,6 +24,7 @@ public class PongManager : MonoBehaviour
     GameObject pongScorePlayer;
 
     GameObject canvas;
+    GameObject restartButton;
 
     Text PlayerScoreText;
     Text EnemyScoreText;
@@ -39,6 +40,8 @@ public class PongManager : MonoBehaviour
         managerObject = GameObject.FindGameObjectWithTag("Manager");
         manager = managerObject.GetComponent<GameManager>();
         canvas = transform.Find("Canvas").gameObject;
+        restartButton = canvas.transform.Find("RestartButton").gameObject;
+        restartButton.GetComponent<Button>().onClick.AddListener(this.Restart);
         PlayerScoreText = canvas.transform.Find("PlayerScore").GetComponent<Text>();
         EnemyScoreText = canvas.transform.Find("EnemyScore").GetComponent<Text>();
 
@@ -65,13 +68,7 @@ public class PongManager : MonoBehaviour
         {
             if (autoRestart.stacks == 0)
             {
-                if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 150, 50), "RESTART"))
-                {
-                    PlayerScore = 0;
-                    EnemyScore = 0;
-                    theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);                    
-                    gameEnded = false;
-                }
+                restartButton.SetActive(true);
             }
             else
             {
@@ -103,20 +100,36 @@ public class PongManager : MonoBehaviour
         
     }
 
-    public static void Score(BallController ball, string wallID, BallTypes type)
+    public static void Score(BallController ball, string wallID, BallTypes type, GameObject PongManagerObject)
+    {
+        PongManager manager = PongManagerObject.GetComponent<PongManager>();
+        manager.Score(ball, wallID, type);
+    }
+
+    public void Score(BallController ball, string wallID, BallTypes type)
     {
         GameManager m = managerObject.GetComponent<GameManager>();
         Upgrade baseBall = m.GetData().upgrades.Ball_Value;
         if (wallID == "RightWall")
         {
             PlayerScore++;
-            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) *(1+baseBall.stacks*baseBall.increaseValue)));
+            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
         }
         else
         {
             EnemyScore++;
             managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
         }
-            
+
+    }
+
+    public void Restart()
+    {
+        PlayerScore = 0;
+        EnemyScore = 0;
+        theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+        gameEnded = false;
+        restartButton.SetActive(false);
+
     }
 }

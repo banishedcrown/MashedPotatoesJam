@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 871386404}
     - target: {fileID: 1534261002466754244, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1607556281251865727, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -664,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 7860849197567658610, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
       propertyPath: m_Maskable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437545090274874290, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}

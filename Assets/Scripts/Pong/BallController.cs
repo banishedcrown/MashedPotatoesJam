@@ -146,7 +146,7 @@ public class BallController : MonoBehaviour
             }
             if (coll.collider.CompareTag("Goal"))
             {
-                PongManager.Score(this, coll.collider.gameObject.name, type);
+                //PongManager.Score(this, coll.collider.gameObject.name, type);
                 RestartGame();
             }
         }
