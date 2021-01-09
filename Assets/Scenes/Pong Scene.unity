@@ -609,6 +609,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 871386405}
     m_Modifications:
+    - target: {fileID: 4498835805649970409, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498835805649970409, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7860849196286190837, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
       propertyPath: m_Name
       value: Pong Game
