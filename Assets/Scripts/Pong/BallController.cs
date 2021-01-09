@@ -34,7 +34,7 @@ public class BallController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         manager = GameManager.GetManager();
-        spawnPoint = transform.parent.Find("Ball Spawn").transform.localPosition;
+        spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         ballSprite = GetComponent<SpriteRenderer>();
         pManager = transform.parent.GetComponent<PongManager>();
         

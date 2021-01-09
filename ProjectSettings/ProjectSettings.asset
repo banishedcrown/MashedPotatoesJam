@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Banished Crown Studios
-  productName: BCS Mashup Jam
+  productName: Just Pong
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
@@ -130,7 +130,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.2
+  bundleVersion: 1.3.2
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
