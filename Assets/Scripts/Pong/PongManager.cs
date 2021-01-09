@@ -47,6 +47,8 @@ public class PongManager : MonoBehaviour
 
         scoreLimit = manager.GetData().upgrades.Pong_Score_Limit;
         autoRestart = manager.GetData().upgrades.Pong_Auto_Resart;
+        
+        Restart();
     }
 
     private void OnEnable()
