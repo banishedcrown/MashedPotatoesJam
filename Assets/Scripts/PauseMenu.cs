@@ -82,4 +82,9 @@ public class PauseMenu : MonoBehaviour
         Mixer.SetFloat ("SFXVol", Mathf.Log10(sliderValue) * 20);
         PlayerPrefs.SetFloat("SFXVol", sliderValue);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
