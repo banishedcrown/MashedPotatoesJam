@@ -11,8 +11,8 @@ public enum UpgradeNames {
 
     Ball_Speed,  
     Ball_Value, //flat increase
-    Ball_Rally_Multiplier, //similar to rally, but upgrades increase how fast the bounces increase value
-    Ball_Rally, //chance to spawn a rally ball, that gains points per bounce. 
+    Rally_Ball_Multiplier, //similar to rally, but upgrades increase how fast the bounces increase value
+    Rally_Ball, //chance to spawn a rally ball, that gains points per bounce. 
 
     Pong_Set_Speed,
     Pong_Auto_Resart,
@@ -43,8 +43,8 @@ public class UpgradeData
 
     public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
     public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 1, 5);
-    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Ball_Rally_Multiplier, 50, 5, 1, 25, 1);
-    public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Ball_Rally, 10, 3, 0.10f,10);
+    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Rally_Ball_Multiplier, 50, 5, 1, 25, 1);
+    public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Rally_Ball, 10, 3, 0.10f,10);
 
     public Upgrade Pong_Instance_Increase = new Upgrade(UpgradeNames.Pong_Instance_Increase, 250, 10, 1, 10);
     public Upgrade Pong_Set_Speed = new Upgrade(UpgradeNames.Pong_Set_Speed, 10, 4, 0.25f);
