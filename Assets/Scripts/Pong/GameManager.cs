@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Pong Scene" || scene.name == "Secret Upgrade")
+        if (scene.name == "Pong Scene")
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();
@@ -211,6 +211,11 @@ public class GameManager : MonoBehaviour
 
     public static void InitializeInstances(GameObject pongPrefab)
     {
+        for(int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name == "Secret Upgrade") return;
+        }
+
         Upgrade theUpgrade = GameManager.GetManager().GetData().upgrades.Pong_Instance_Increase;
 
         int count = 0;

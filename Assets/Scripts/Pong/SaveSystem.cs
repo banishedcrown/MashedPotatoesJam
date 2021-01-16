@@ -37,4 +37,22 @@ public static class SaveSystem
     {
         return File.Exists(path);
     }
+
+    public static byte[] GetSaveData()
+    {
+        FileStream stream = new FileStream(path, FileMode.Open);
+        byte[] data = new byte[stream.Length];
+        int num = (int)stream.Length;
+        int numRead = 0;
+        while(num > 0)
+        {
+            int n = stream.Read(data, numRead, num);
+            if (n == 0) break;
+
+            numRead += n;
+            num -= n;
+        }
+        stream.Close();
+        return data;
+    }
 }
