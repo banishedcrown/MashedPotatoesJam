@@ -50,13 +50,30 @@ public class BallController : MonoBehaviour
         if (position.y > BoundY || position.y < - BoundY )
         {
             transform.localPosition = spawnPoint;
+            rb2d.velocity /= 2f;
         }
         else
         {
             if (position.x > BoundX || position.x < -BoundX)
             {
                 transform.localPosition = spawnPoint;
+                rb2d.velocity /= 2f;
             }
+        }
+
+        float angle = Vector2.Angle(rb2d.velocity, Vector2.right* (rb2d.velocity.x >= 0 ? 1 : -1 ) );
+        if (angle > 80)
+        {
+            Vector2 nv = rb2d.velocity;
+            nv.y /= 1.5f;
+            nv.x *= 1.5f;
+            rb2d.velocity = nv;
+        }
+        if (angle < 5 && rb2d.velocity != Vector2.zero)
+        {
+            Vector2 nv = rb2d.velocity;
+            nv.y += (transform.localPosition.y > 0 ? -1 : 1);
+            rb2d.velocity = nv;
         }
 
         if (transform.parent.localPosition == Vector3.zero)

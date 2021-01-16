@@ -39,6 +39,7 @@ public class UpgradeButton : MonoBehaviour
             nameLabel.GetComponent<TMP_Text>().text = theUpgrade.name.ToString().Replace('_', ' ');
         }
         gameData = manager.GetData();
+        UpdateUgrades();
     }
     private void Update()
     {
