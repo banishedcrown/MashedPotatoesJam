@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float targetY = 0.0f;
 
     private bool useAI = false;
+    private float delayAI = 0f;
 
     private float startY;
 
@@ -29,11 +30,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var vel = rb2d.velocity;
+        var vel = Vector2.zero;
 
         if (useAI)
         {
-            vel = doAI();
+            if (Time.time - delayAI > 0.5f)
+                vel = doAI();
         }
         else
         {
@@ -42,10 +44,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(moveUp))
         {
+            delayAI = Time.time;
             vel.y = speed;
         }
         else if (Input.GetKey(moveDown))
         {
+            delayAI = Time.time;
             vel.y = -speed;
         }
 
