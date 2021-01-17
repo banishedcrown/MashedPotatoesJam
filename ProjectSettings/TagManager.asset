@@ -8,6 +8,7 @@ TagManager:
   - Manager
   - Wall
   - Goal
+  - PongGame
   layers:
   - Default
   - TransparentFX

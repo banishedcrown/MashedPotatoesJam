@@ -33,6 +33,8 @@ public class PongManager : MonoBehaviour
     Upgrade scoreLimit;
     Upgrade autoRestart;
 
+    int scoreLimitAdjust = 0; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,14 +84,14 @@ public class PongManager : MonoBehaviour
         }
         else
         {
-            
-            if (PlayerScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
+            float scoreCap = 5 + (scoreLimit.stacks + scoreLimitAdjust) * scoreLimit.increaseValue;
+            if (PlayerScore == (int)scoreCap)
             {
                 GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
                 theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
                 gameEnded = true;
             }
-            else if (EnemyScore == 5 + scoreLimit.stacks * scoreLimit.increaseValue)
+            else if (EnemyScore == (int)scoreCap)
             {
                 GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
 
@@ -133,5 +135,12 @@ public class PongManager : MonoBehaviour
         gameEnded = false;
         restartButton.SetActive(false);
 
+    }
+
+    public void changeScoreLimit(int dir)
+    {
+        scoreLimitAdjust += dir;
+        if (scoreLimitAdjust > 0) scoreLimitAdjust = 0;
+        if (scoreLimitAdjust < -scoreLimit.stacks) scoreLimitAdjust = -scoreLimit.stacks;
     }
 }

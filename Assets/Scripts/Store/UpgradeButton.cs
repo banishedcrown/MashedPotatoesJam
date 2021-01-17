@@ -21,6 +21,10 @@ public class UpgradeButton : MonoBehaviour
 
     GameData gameData;
 
+    GameObject[] pongManagers;
+    int currentScoreLimit = 0;
+    GameObject minus, plus;
+
     private void Start()
     {
         managerObject = GameObject.FindGameObjectWithTag("Manager");
@@ -40,6 +44,13 @@ public class UpgradeButton : MonoBehaviour
         }
         gameData = manager.GetData();
         UpdateUgrades();
+
+        if (theUpgrade.name == UpgradeNames.Pong_Score_Limit)
+        {
+            pongManagers = GameObject.FindGameObjectsWithTag("PongGame");
+            minus = transform.Find("Minus").gameObject;
+            plus = transform.Find("Plus").gameObject;
+        }
     }
     private void Update()
     {
@@ -58,17 +69,23 @@ public class UpgradeButton : MonoBehaviour
             cost += "\n" + theUpgrade.winsRequired + " wins";
         }
         costLabel.GetComponent<TMP_Text>().text = cost;
+
+        if (theUpgrade.name == UpgradeNames.Pong_Score_Limit)
+        {
+            pongManagers = GameObject.FindGameObjectsWithTag("PongGame");
+            minus.SetActive(true);
+            plus.SetActive(true);
+            if (currentScoreLimit == 0)
+            {
+                plus.SetActive(false);
+            }
+            if (currentScoreLimit == -theUpgrade.stacks)
+            {
+                minus.SetActive(false);
+            }
+        }
     }
-   /* public void PushedButton(UpgradeNames name, int value)
-    {
-        UpgradeData d = manager.GetComponent<GameManager>().GetData().upgrades;
-
-        Upgrade u = d.GetUpgradeByName(name);
-        u.addStack(value);
-
-        
-    }*/
-
+  
     void Clicked()
     {
         manager.RemovePB(theUpgrade.current_cost);
@@ -78,7 +95,7 @@ public class UpgradeButton : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateUgrades();
+        UpdateUgrades(); 
     }
 
 
@@ -89,7 +106,9 @@ public class UpgradeButton : MonoBehaviour
             if (theUpgrade.name == UpgradeNames.Secret_Upgrade)
             {
                 if (theUpgrade.stacks > 0)
+                {
                     toggleButton.SetActive(true);
+                }
                 else
                 {
                     toggleButton.SetActive(false);
@@ -99,6 +118,25 @@ public class UpgradeButton : MonoBehaviour
             {
                 GameManager.InitializeInstances(pongPrefab);
             }
+            if (theUpgrade.name == UpgradeNames.Pong_Score_Limit)
+            {
+                pongManagers = GameObject.FindGameObjectsWithTag("PongGame");
+            }
         }
+    }
+
+    public void changeScoreLimit( int dir)
+    {
+        currentScoreLimit += dir;
+        if (currentScoreLimit > 0) currentScoreLimit = 0;
+        if (currentScoreLimit < -theUpgrade.stacks) currentScoreLimit = -theUpgrade.stacks;
+
+        foreach (GameObject g in pongManagers)
+        {
+            g.GetComponent<PongManager>().changeScoreLimit(currentScoreLimit);
+        }
+
+
+
     }
 }
