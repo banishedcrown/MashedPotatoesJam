@@ -1019,14 +1019,14 @@ MonoBehaviour:
   m_text: 'This is your best chance to escape, and likely the best chance for others
     as well.
 
-    
+
 
     You just hope they get the hint.
 
-    
 
-    You barely
-    hesitate before you begin sprinting towards the main exit.'
+
+    You barely hesitate before
+    you begin sprinting towards the main exit.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1163,16 +1163,15 @@ MonoBehaviour:
   m_text: 'At some point you had to begin upgrading your bit depth as the game could
     no longer add on any more cores.
 
-    
 
-    However as you peek out of the
-    abandoned cell you notice that the guards and security cameras barely even register
-    you.
 
-    
+    However as you peek out of the abandoned
+    cell you notice that the guards and security cameras barely even register you.
 
-    Even walking up to and waving in one of the guards face provokes
-    no response.'
+
+
+    Even
+    walking up to and waving in one of the guards face provokes no response.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4333,17 +4332,17 @@ MonoBehaviour:
   m_text: 'As you open the main entrance door, now surrounded with disabled guard
     units the bright light of the sun warms your face.
 
-    
 
-    Looking behind
-    yourself you see some small figures in the dark also running to make their escape
-    towards you. The door streaming light to guide their way.
 
-    
+    Looking behind yourself
+    you see some small figures in the dark also running to make their escape towards
+    you. The door streaming light to guide their way.
 
-    The darkness
-    of the facility is now behind you. Mankind could certainly be nonexistent outside
-    of this prison but the ones behind will make sure that humanity can be reformed.'
+
+
+    The darkness of the
+    facility is now behind you. Mankind could certainly be nonexistent outside of
+    this prison but the ones behind will make sure that humanity can be reformed.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6205,17 +6204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805322052}
   m_CullTransparentMesh: 0
---- !u!114 &810477267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8865604207015778669, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
-  m_PrefabInstance: {fileID: 1087878343204357007}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6c7c52679593945952b5ad75ccdaa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &823283874
 GameObject:
   m_ObjectHideFlags: 0
@@ -6276,10 +6264,10 @@ MonoBehaviour:
   m_text: 'As you peek out of the abandoned cell you notice that the guards and security
     cameras barely even register you.
 
-    
 
-    And then the lights go off. The
-    red emergency lights switching on shortly after.'
+
+    And then the lights go off. The red
+    emergency lights switching on shortly after.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10712,15 +10700,15 @@ MonoBehaviour:
   m_text: 'This is your best chance to escape, and likely the best chance for others
     as well.
 
-    
 
-    You have no fear that they will get the hint, as you see
-    one of the metallic guards teeter and drop to the ground.
 
-    
+    You have no fear that they will get the hint, as you see one
+    of the metallic guards teeter and drop to the ground.
 
-    You barely
-    hesitate before you begin sprinting towards the main exit.'
+
+
+    You barely hesitate
+    before you begin sprinting towards the main exit.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11352,14 +11340,14 @@ MonoBehaviour:
   m_text: 'You walk to the already open door, the guards stationed there barely even
     reacting as you push some out of the way.
 
-    
-
-    You can even see some
-    of the other inmates clumping a safe distance away from the grey walls now behind
-    you.
 
 
-    Humanity might have a chance after all.'
+    You can even see some of the
+    other inmates clumping a safe distance away from the grey walls now behind you.
+
+
+    Humanity
+    might have a chance after all.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18307,6 +18295,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1357640725}
     m_Modifications:
+    - target: {fileID: 1087878342378081239, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087878342378081239, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1087878342378081239, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1087878342884580327, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18396,11 +18396,31 @@ PrefabInstance:
       value: Button (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
       propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 810477267}
+      objectReference: {fileID: 11500000, guid: cd6c22f3ee2c1da4ab0e10aecbac18a5, type: 3}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1087878343204357009}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
       propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: RFH
       objectReference: {fileID: 0}
     - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
@@ -18408,8 +18428,33 @@ PrefabInstance:
       value: Link, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: WindowsLink, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
       propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518443189301398164, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+      propertyPath: OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+--- !u!1 &1087878343204357008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1087878342884580328, guid: a4705a8f3080193409e6ffc36664156b, type: 3}
+  m_PrefabInstance: {fileID: 1087878343204357007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1087878343204357009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087878343204357008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6c22f3ee2c1da4ab0e10aecbac18a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
