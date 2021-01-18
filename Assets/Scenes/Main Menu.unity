@@ -4660,8 +4660,8 @@ MonoBehaviour:
   OnPress:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 180366696}
-        m_TargetAssemblyTypeName: WindowsLink, Assembly-CSharp
+      - m_Target: {fileID: 1268989265}
+        m_TargetAssemblyTypeName: Link, Assembly-CSharp
         m_MethodName: Franz
         m_Mode: 1
         m_Arguments:
@@ -6488,8 +6488,8 @@ MonoBehaviour:
   OnPress:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 180366696}
-        m_TargetAssemblyTypeName: WindowsLink, Assembly-CSharp
+      - m_Target: {fileID: 1675414771}
+        m_TargetAssemblyTypeName: Link, Assembly-CSharp
         m_MethodName: Isaac
         m_Mode: 1
         m_Arguments:
