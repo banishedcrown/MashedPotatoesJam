@@ -67,4 +67,12 @@ public class WindowsLink : MonoBehaviour
 			Application.OpenURL("https://banishedcrown.itch.io/rfh");
 		}
 	}
+
+	public void KOUYeung()
+	{
+		if (Application.platform != RuntimePlatform.WebGLPlayer)
+		{
+			Application.OpenURL("https://github.com/kou-yeung/WebGLInput/releases");
+		}
+	}
 }
