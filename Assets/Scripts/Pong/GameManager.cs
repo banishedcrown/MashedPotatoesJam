@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject pongPrefab;
 
     GameObject OptionsPanel;
+    Button loadButton;
 
     public AudioClip music; 
 
@@ -57,14 +58,14 @@ public class GameManager : MonoBehaviour
         else if(scene.name == "Main Menu")
         {
             inGame = false;
-            Button button = GameObject.Find("Load").GetComponent<Button>();
+            loadButton = GameObject.Find("Load").GetComponent<Button>();
             if (SaveSystem.SaveExists())
             {
-                button.interactable = true;
+                loadButton.interactable = true;
             }
             else
             {
-                button.interactable = false;
+                loadButton.interactable = false;
             }
         }
         else
@@ -103,7 +104,21 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
+        else
+        {
+            if(SceneManager.GetActiveScene().name == "Main Menu")
+            {
+               
+                if (SaveSystem.SaveExists())
+                {
+                    loadButton.interactable = true;
+                }
+                else
+                {
+                    loadButton.interactable = false;
+                }
+            }
+        }
     }
 
     private void OnGUI()
