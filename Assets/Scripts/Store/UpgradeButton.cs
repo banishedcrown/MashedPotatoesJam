@@ -133,7 +133,7 @@ public class UpgradeButton : MonoBehaviour
 
         foreach (GameObject g in pongManagers)
         {
-            g.GetComponent<PongManager>().changeScoreLimit(currentScoreLimit);
+            g.GetComponent<PongManager>().changeScoreLimit(dir);
         }
 
 

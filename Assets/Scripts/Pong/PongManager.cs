@@ -142,5 +142,7 @@ public class PongManager : MonoBehaviour
         scoreLimitAdjust += dir;
         if (scoreLimitAdjust > 0) scoreLimitAdjust = 0;
         if (scoreLimitAdjust < -scoreLimit.stacks) scoreLimitAdjust = -scoreLimit.stacks;
+
+        Debug.Log("current limit: " + scoreLimitAdjust);
     }
 }
