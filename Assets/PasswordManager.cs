@@ -64,5 +64,6 @@ public class PasswordManager : MonoBehaviour
 
         SaveSystem.SaveData(importedData); //overrides save. they better be sure. 
         inputButton.text = "Loaded!";
+        OverwritePrompt.SetActive(false);
     }
 }
