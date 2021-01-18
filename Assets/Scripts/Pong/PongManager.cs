@@ -85,13 +85,13 @@ public class PongManager : MonoBehaviour
         else
         {
             float scoreCap = 5 + (scoreLimit.stacks + scoreLimitAdjust) * scoreLimit.increaseValue;
-            if (PlayerScore == (int)scoreCap)
+            if (PlayerScore >= (int)scoreCap)
             {
                 GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "Computer WINS");
                 theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
                 gameEnded = true;
             }
-            else if (EnemyScore == (int)scoreCap)
+            else if (EnemyScore >= (int)scoreCap)
             {
                 GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER WINS");
 
