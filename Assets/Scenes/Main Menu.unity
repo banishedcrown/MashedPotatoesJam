@@ -1201,6 +1201,9 @@ MonoBehaviour:
   Platform: {fileID: 770953028}
   MenuPassword: {fileID: 1107134341}
   MenuNoPassword: {fileID: 1979261139}
+  OverrideActivated: 0
+  VersionOverride: 
+  PlatformOverride: 
 --- !u!1 &268733586
 GameObject:
   m_ObjectHideFlags: 0

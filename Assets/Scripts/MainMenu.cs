@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
     public GameObject MenuPassword;
     public GameObject MenuNoPassword;
 
+    //For Franz
+    public bool OverrideActivated;
+    public string VersionOverride;
+    public string PlatformOverride;
+
     public void Quit()
     {
         Application.Quit();
@@ -58,5 +63,12 @@ public class MainMenu : MonoBehaviour
         //Then set the application version text to the current version.
         Version.GetComponent<TMP_Text>().text = "V" + Application.version;
 
+
+        //Override Stuff
+        if (OverrideActivated == true)
+        {
+            Platform.GetComponent<TMP_Text>().text = PlatformOverride;
+            Version.GetComponent<TMP_Text>().text = VersionOverride;
+        }
     }
 }
