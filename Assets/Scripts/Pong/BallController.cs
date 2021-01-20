@@ -20,16 +20,22 @@ public class BallController : MonoBehaviour
     public float currentValue = 1;
 
     public bool instancedBall = true;
+
+    public float maxAngle = 85f;
+    public float minAngle = 5f;
+
     bool inFocus = true;
 
     float BoundY = 5;
     float BoundX = 10;
 
+    public float baseSpeed = 5f;
+
     GameManager manager;
     SpriteRenderer ballSprite;
     PongManager pManager; 
 
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
@@ -37,8 +43,6 @@ public class BallController : MonoBehaviour
         spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         ballSprite = GetComponent<SpriteRenderer>();
         pManager = transform.parent.GetComponent<PongManager>();
-        
-        Invoke("GoBall", 2);
     }
 
     private void LateUpdate()
@@ -61,19 +65,27 @@ public class BallController : MonoBehaviour
             }
         }
 
-        float angle = Vector2.Angle(rb2d.velocity, Vector2.right* (rb2d.velocity.x >= 0 ? 1 : -1 ) );
-        if (angle > 80)
+        float angle = Vector2.Angle(rb2d.velocity, rb2d.velocity.x >= 0 ? Vector2.right : Vector2.left );
+        if (angle > maxAngle)
         {
             Vector2 nv = rb2d.velocity;
             nv.y /= 1.5f;
             nv.x *= 1.5f;
             rb2d.velocity = nv;
         }
-        if (angle < 5 && rb2d.velocity != Vector2.zero)
+        if (angle < minAngle && rb2d.velocity != Vector2.zero)
         {
             Vector2 nv = rb2d.velocity;
             nv.y += (transform.localPosition.y > 0 ? -1 : 1);
             rb2d.velocity = nv;
+        }
+
+        if(rb2d.velocity != Vector2.zero)
+        {
+            if(rb2d.velocity.magnitude < baseSpeed)
+            {
+                rb2d.velocity = rb2d.velocity.normalized * baseSpeed;
+            }
         }
 
         if (transform.parent.localPosition == Vector3.zero)
@@ -91,7 +103,7 @@ public class BallController : MonoBehaviour
 
         if(pManager.gameEnded)
         {
-            Invoke("GoBall", 1);
+            //Invoke("GoBall", 1);
             return;
         }
         Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
@@ -99,7 +111,8 @@ public class BallController : MonoBehaviour
 
         currentValue = 1 + ballValue.stacks * ballValue.increaseValue;
 
-        var x = Random.Range(0, 1);
+        int x = Random.Range(0, 2);
+        Debug.Log("ball direction: " + x);
         x = x == 0 ? -1 : 1;
         var y = Random.Range(-1f, 1f);
 
@@ -108,11 +121,15 @@ public class BallController : MonoBehaviour
 
         if (ballSpeed.stacks > 0)
         {
-            rb2d.velocity = (dir * (5 + ballSpeed.increaseValue * ballSpeed.stacks));
+            baseSpeed = 5 + ballSpeed.increaseValue * ballSpeed.stacks;
+            rb2d.velocity = (dir * (baseSpeed));
+
         }
         else
         {
+            baseSpeed = 5;
             rb2d.velocity = dir * 5;
+
         }
 
         rb2d.velocity *= transform.parent.localScale;
@@ -144,12 +161,14 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        
         if (coll.collider.CompareTag("Player"))
         {
             Vector2 vel;
             vel.x = rb2d.velocity.x;
             vel.y = (rb2d.velocity.y) + (coll.collider.attachedRigidbody.velocity.y / 3);
             rb2d.velocity = vel;
+
             if (inFocus) audioSource.PlayOneShot(PaddleBounce);
             
         }

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Pong Scene")
+        if (scene.name == "Pong Scene" || scene.name == "Secret Upgrade")
         {
             inGame = true;
             CurrentPBLabel = GameObject.Find("CurrentPB").GetComponent<TMP_Text>();

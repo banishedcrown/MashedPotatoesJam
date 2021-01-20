@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: DefaultObject
       value: 
       objectReference: {fileID: 871386404}
+    - target: {fileID: 1387470994, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: NavigationArrows
+      value: 
+      objectReference: {fileID: 127851294}
     - target: {fileID: 1593416555940704, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
