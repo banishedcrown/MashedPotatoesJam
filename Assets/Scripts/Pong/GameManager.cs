@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
 
     public AudioClip music; 
 
-    public int alterMoney = 0;
-    public int alterWins = 0;
+    public long alterMoney = 0;
+    public long alterWins = 0;
     bool inGame = false;
     private void Awake()
     {
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
             double maxNum = System.Math.Pow(2, maxBits);
 
-            if (maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore)
+            if (maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore || maxPongScore < 0 || maxPB < 0 || maxWins < 0)
             {
                 LoadScene("Upgrade Process");
             }
