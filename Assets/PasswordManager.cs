@@ -18,7 +18,7 @@ public class PasswordManager : MonoBehaviour
 
     public GameObject OverwritePrompt;
 
-    GameData importedData;
+    GameSaveData importedData;
  
 
     void OnEnable()
@@ -35,7 +35,7 @@ public class PasswordManager : MonoBehaviour
             byte[] data = System.Convert.FromBase64String(InputField.text);
             MemoryStream ms = new MemoryStream(data);
             BinaryFormatter formatter = new BinaryFormatter();
-            importedData = formatter.Deserialize(ms) as GameData;
+            importedData = formatter.Deserialize(ms) as GameSaveData;
 
             if (SaveSystem.SaveExists())
             {
@@ -62,7 +62,7 @@ public class PasswordManager : MonoBehaviour
     public void ConfirmedLoad()
     {
 
-        SaveSystem.SaveData(importedData); //overrides save. they better be sure. 
+        SaveSystem.SaveData(new GameData(importedData)); //overrides save. they better be sure. 
         inputButton.text = "Loaded!";
         OverwritePrompt.SetActive(false);
     }

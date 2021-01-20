@@ -21,7 +21,9 @@ public enum UpgradeNames {
 
     Pong_Instance_Increase,
     Secret_Upgrade, //loss
-    Unlock_Music
+    Unlock_Music, 
+
+    LengthTracker,
 };
 
 public enum BallTypes

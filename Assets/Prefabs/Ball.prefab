@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &59349752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,10 +135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba485f85b7409b41950f06b3c047d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   score: {fileID: 8300000, guid: c4af8f409ff083f4793ccf16763ca374, type: 3}
   PaddleBounce: {fileID: 8300000, guid: e9c28538521f0dc42af595ce76059fc6, type: 3}
   EdgeBounce: {fileID: 8300000, guid: 81a8614978adf444ba31393876fa7586, type: 3}
   currentValue: 0
+  instancedBall: 1
+  maxAngle: 85
+  minAngle: 5
+  baseSpeed: 5
 --- !u!82 &7612728238678532486
 AudioSource:
   m_ObjectHideFlags: 0

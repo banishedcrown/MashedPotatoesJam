@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -71,4 +72,21 @@ public class MainMenu : MonoBehaviour
             Version.GetComponent<TMP_Text>().text = VersionOverride;
         }
     }
+
+
+    public void NewGame()
+    {
+        GameManager.GetManager().NewGame();
+    }
+
+    public void LoadGame()
+    {
+        GameManager.GetManager().LoadGame();
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
 }
