@@ -38,7 +38,7 @@ public class PongManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        theBall = GameObject.FindGameObjectWithTag("Ball");
+        theBall = transform.Find("Ball").gameObject;
         managerObject = GameObject.FindGameObjectWithTag("Manager");
         manager = managerObject.GetComponent<GameManager>();
         canvas = transform.Find("Canvas").gameObject;
@@ -131,7 +131,8 @@ public class PongManager : MonoBehaviour
     {
         PlayerScore = 0;
         EnemyScore = 0;
-        theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+        if(theBall != null)
+            theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
         gameEnded = false;
         restartButton.SetActive(false);
 

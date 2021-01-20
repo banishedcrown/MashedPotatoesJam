@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
             SceneManager.sceneLoaded += OnLevelLoaded;
             DontDestroyOnLoad(this.gameObject);
         }
+        SaveSystem.initSavePath();
     }
 
     // Start is called before the first frame update
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         }
         else if(scene.name == "Main Menu")
         {
+            SaveSystem.initSavePath();
             inGame = false;
             loadButton = GameObject.Find("Load").GetComponent<Button>();
             if (SaveSystem.SaveExists())
