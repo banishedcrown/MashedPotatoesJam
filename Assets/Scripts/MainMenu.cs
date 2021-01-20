@@ -8,8 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject Version;
     public GameObject Platform;
-    public GameObject MenuPassword;
-    public GameObject MenuNoPassword;
+    public GameObject MenuWebGl;
+    public GameObject MenuNotWeb;
 
     //For Franz
     public bool OverrideActivated;
@@ -30,33 +30,33 @@ public class MainMenu : MonoBehaviour
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
             Platform.GetComponent<TMP_Text>().text = "Windows";
-            MenuPassword.SetActive(false);
-            MenuNoPassword.SetActive(true);
+            MenuWebGl.SetActive(false);
+            MenuNotWeb.SetActive(true);
         }
         else if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             Platform.GetComponent<TMP_Text>().text = "Web";
-            MenuPassword.SetActive(true);
-            MenuNoPassword.SetActive(false);
+            MenuWebGl.SetActive(true);
+            MenuNotWeb.SetActive(false);
         }
         else if (Application.platform == RuntimePlatform.OSXPlayer)
         {
             Platform.GetComponent<TMP_Text>().text = "Mac";
-            MenuPassword.SetActive(false);
-            MenuNoPassword.SetActive(true);
+            MenuWebGl.SetActive(false);
+            MenuNotWeb.SetActive(true);
         }
         else if (Application.platform == RuntimePlatform.LinuxPlayer)
         {
             Platform.GetComponent<TMP_Text>().text = "Linux";
-            MenuPassword.SetActive(false);
-            MenuNoPassword.SetActive(true);
+            MenuWebGl.SetActive(false);
+            MenuNotWeb.SetActive(true);
         }
         else
         {
             //If all checks fail just push the application platform unformatting and set to the windows version of the main menu.
             Platform.GetComponent<TMP_Text>().text = Application.platform.ToString();
-            MenuPassword.SetActive(false);
-            MenuNoPassword.SetActive(true);
+            MenuWebGl.SetActive(false);
+            MenuNotWeb.SetActive(true);
         }
 
 
