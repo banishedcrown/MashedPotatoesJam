@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  score: {fileID: 8300000, guid: c4af8f409ff083f4793ccf16763ca374, type: 3}
-  PaddleBounce: {fileID: 8300000, guid: e9c28538521f0dc42af595ce76059fc6, type: 3}
-  EdgeBounce: {fileID: 8300000, guid: 81a8614978adf444ba31393876fa7586, type: 3}
+  score: {fileID: 8300000, guid: cb1d863f0a6af104ca61954afedf7231, type: 3}
+  PaddleBounce: {fileID: 8300000, guid: 7eaeb0cd35647634d9b8b4ad81c5ce2f, type: 3}
+  EdgeBounce: {fileID: 8300000, guid: cf5cde143148ea34c891f5451d4ae58a, type: 3}
   currentValue: 0
   instancedBall: 1
   maxAngle: 85
