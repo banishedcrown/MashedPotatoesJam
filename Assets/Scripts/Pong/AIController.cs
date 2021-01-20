@@ -89,7 +89,7 @@ public class AIController : MonoBehaviour
             if (t.CompareTag("Ball"))
             {
                 GameObject g = t.gameObject;
-                if (g.transform.localPosition.x < 0 - theUpgrade.stacks * theUpgrade.increaseValue)
+                if (g.transform.localPosition.x < 0 + theUpgrade.stacks * theUpgrade.increaseValue)
                 {
                     float dist = Vector2.Distance(transform.localPosition, g.transform.localPosition);
                     if (dist < minDistance)

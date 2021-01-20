@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum UpgradeNames { 
     None, 
@@ -107,20 +108,25 @@ public class Upgrade
         this.rateIncrease = rateIncrease;
         this.increaseValue = increaseValue;
         this.winsRequired = winsRequired;
-        current_cost = CalcCurrentCost();
+        UpdateCurrentCost();
     }
 
     public void addStack(int num)
     {
         stacks += num;
-        current_cost = CalcCurrentCost();
+        UpdateCurrentCost();
     }
 
 
-    long CalcCurrentCost()
+    public long CalcCurrentCost()
     {
 
         return base_cost * ((long)Math.Pow(rateIncrease,stacks));
+    }
+
+    public void UpdateCurrentCost()
+    {
+        this.current_cost = CalcCurrentCost();
     }
 
 }

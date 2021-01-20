@@ -38,7 +38,9 @@ public class GameData
 
         for (int c = 0; c < data.upgrades.GetLength(0); c++)
         {
-            this.upgrades.GetUpgradeByName((UpgradeNames)c+1).stacks = data.upgrades[c, 0];
+            Upgrade theUpgrade = this.upgrades.GetUpgradeByName((UpgradeNames)c + 1);
+            theUpgrade.stacks = data.upgrades[c, 0];
+            theUpgrade.UpdateCurrentCost();
         }
 
     }
