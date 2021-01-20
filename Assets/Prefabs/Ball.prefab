@@ -141,7 +141,7 @@ MonoBehaviour:
   EdgeBounce: {fileID: 8300000, guid: cf5cde143148ea34c891f5451d4ae58a, type: 3}
   currentValue: 0
   instancedBall: 1
-  maxAngle: 85
+  maxAngle: 55
   minAngle: 5
   baseSpeed: 5
 --- !u!82 &7612728238678532486
