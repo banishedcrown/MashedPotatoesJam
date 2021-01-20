@@ -122,7 +122,10 @@ public class PongManager : MonoBehaviour
         else
         {
             EnemyScore++;
-            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
+            if(EnemyScore >= 5 + (scoreLimit.stacks + scoreLimitAdjust) * scoreLimit.increaseValue)
+                managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) * 1.25));
+            else
+                managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) + 1));
         }
 
     }

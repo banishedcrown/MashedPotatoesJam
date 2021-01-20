@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject OverwritePrompt;
     public GameObject pongPrefab;
+    public GameObject secretPrefab;
 
     GameObject OptionsPanel;
     Button loadButton;
@@ -58,7 +59,6 @@ public class GameManager : MonoBehaviour
         }
         else if(scene.name == "Main Menu")
         {
-            SaveSystem.initSavePath();
             inGame = false;
             loadButton = GameObject.Find("Load").GetComponent<Button>();
             if (SaveSystem.SaveExists())
@@ -230,7 +230,11 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < SceneManager.sceneCount; i++)
         {
-            if (SceneManager.GetSceneAt(i).name == "Secret Upgrade") return;
+            if (SceneManager.GetSceneAt(i).name == "Secret Upgrade")
+            {
+                GameManager.GetManager().InitializeSecretInstances();
+                return;
+            }
         }
 
         Upgrade theUpgrade = GameManager.GetManager().GetData().upgrades.Pong_Instance_Increase;
@@ -240,6 +244,33 @@ public class GameManager : MonoBehaviour
         foreach (Transform t in instances.transform)
         {
             if (t.name.StartsWith("Pong"))
+                count++;
+        }
+        for (int c = count; c <= theUpgrade.stacks; c++)
+        {
+            GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
+            Vector3 pos = Vector3.zero;
+            pos.x = 20 * c;
+            g.transform.position = pos;
+
+        }
+    }
+
+    public void InitializeSecretInstances()
+    {
+        GameObject pongPrefab = secretPrefab;
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name == "Secret Upgrade") return;
+        }
+
+        Upgrade theUpgrade = GameManager.GetManager().GetData().upgrades.Pong_Instance_Increase;
+
+        int count = 0;
+        GameObject instances = GameObject.Find("SecretInstances");
+        foreach (Transform t in instances.transform)
+        {
+            if (t.name.StartsWith("Secret"))
                 count++;
         }
         for (int c = count; c <= theUpgrade.stacks; c++)

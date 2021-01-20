@@ -21,7 +21,7 @@ public class BallController : MonoBehaviour
 
     public bool instancedBall = true;
 
-    public float maxAngle = 85f;
+    public float maxAngle = 75f;
     public float minAngle = 5f;
 
     bool inFocus = true;
@@ -43,6 +43,7 @@ public class BallController : MonoBehaviour
         spawnPoint = transform.parent.Find("Ball Spawn").transform.position;
         ballSprite = GetComponent<SpriteRenderer>();
         pManager = transform.parent.GetComponent<PongManager>();
+        
     }
 
     private void LateUpdate()

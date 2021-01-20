@@ -23,4 +23,23 @@ public class GameData
         this.upgrades = upgrades;
         this.progress = progress;
     }
+
+    public GameData(GameSaveData data)
+    {
+        this.currentPB = data.currentPB;
+        this.totalPB = data.totalPB;
+        this.currentWins = data.currentWins;
+        this.totalWins = data.totalWins;
+
+        this.prestigeLevel = data.prestigeLevel;
+        this.progress = data.progress;
+
+        this.upgrades = new UpgradeData();
+
+        for (int c = 0; c < data.upgrades.GetLength(0); c++)
+        {
+            this.upgrades.GetUpgradeByName((UpgradeNames)c+1).stacks = data.upgrades[c, 0];
+        }
+
+    }
 }

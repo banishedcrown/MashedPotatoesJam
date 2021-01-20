@@ -11,7 +11,6 @@ public class SecretButtonToggle : MonoBehaviour
 
     public string SecretScene;
     public GameObject DefaultObject;
-    public GameObject NavigationArrows;
 
     private bool secretOn = false;
 
@@ -32,7 +31,6 @@ public class SecretButtonToggle : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync(SecretScene);
             DefaultObject.SetActive(true);
-            NavigationArrows.SetActive(true);
             secretOn = false;
             label.text = "Secret On";
         }
@@ -40,7 +38,6 @@ public class SecretButtonToggle : MonoBehaviour
         {
             SceneManager.LoadScene(SecretScene, LoadSceneMode.Additive);
             DefaultObject.SetActive(false);
-            NavigationArrows.SetActive(false);
             secretOn = true;
             label.text = "Secret Off";
         }
