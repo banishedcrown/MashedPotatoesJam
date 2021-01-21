@@ -21,6 +21,7 @@ public class BallController : MonoBehaviour
 
     public bool instancedBall = true;
 
+    public Vector2 velocityOverride;
     public float maxAngle = 75f;
     public float minAngle = 5f;
 
@@ -52,6 +53,11 @@ public class BallController : MonoBehaviour
 
         Vector3 pScale = transform.parent.localScale;
 
+        if(velocityOverride != Vector2.zero)
+        {
+            rb2d.velocity = velocityOverride;
+        }
+
         if (position.y > BoundY || position.y < - BoundY )
         {
             transform.localPosition = spawnPoint;
@@ -70,8 +76,8 @@ public class BallController : MonoBehaviour
         if (angle > maxAngle)
         {
             Vector2 nv = rb2d.velocity;
-            nv.y /= 1.5f;
-            nv.x *= 1.5f;
+            nv.y += transform.localPosition.y > 0 ? -1.5f : 1.5f;
+            nv.x += transform.localPosition.x > 0 ? -1.5f : 1.5f;
             rb2d.velocity = nv;
         }
         if (angle < minAngle && rb2d.velocity != Vector2.zero)
