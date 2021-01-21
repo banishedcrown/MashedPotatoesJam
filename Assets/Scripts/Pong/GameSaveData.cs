@@ -5,11 +5,11 @@ using UnityEditor;
 [Serializable]
 public class GameSaveData
 {
-    public long currentPB = 0;
-    public long totalPB = 0;
+    public ulong currentPB = 0;
+    public ulong totalPB = 0;
 
-    public long currentWins = 0;
-    public long totalWins = 0;
+    public ulong currentWins = 0;
+    public ulong totalWins = 0;
 
     public int prestigeLevel = 0;
 

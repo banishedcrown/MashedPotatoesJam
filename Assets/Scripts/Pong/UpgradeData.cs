@@ -93,14 +93,14 @@ public class UpgradeData
 public class Upgrade
 {
     public UpgradeNames name = UpgradeNames.None;
-    public long base_cost; //base cost
-    public long current_cost;
+    public ulong base_cost; //base cost
+    public ulong current_cost;
     public int stacks; //number of times upgraded
     public int rateIncrease; //rate of increase per stack.
     public float increaseValue;
     public int winsRequired;
 
-    public Upgrade(UpgradeNames name, long basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
+    public Upgrade(UpgradeNames name, ulong basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
     {
         this.name = name;
         base_cost = basecost;
@@ -118,10 +118,10 @@ public class Upgrade
     }
 
 
-    public long CalcCurrentCost()
+    public ulong CalcCurrentCost()
     {
 
-        return base_cost * ((long)Math.Pow(rateIncrease,stacks));
+        return base_cost * ((ulong)Math.Pow(rateIncrease,stacks));
     }
 
     public void UpdateCurrentCost()

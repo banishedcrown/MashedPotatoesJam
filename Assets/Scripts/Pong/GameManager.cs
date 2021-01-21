@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
 
     public AudioClip music; 
 
-    public long alterMoney = 0;
-    public long alterWins = 0;
+    public ulong alterMoney = 0;
+    public ulong alterWins = 0;
     bool inGame = false;
     private void Awake()
     {
@@ -80,9 +80,9 @@ public class GameManager : MonoBehaviour
     {
         if (inGame)
         {
-            long maxPongScore = 5 + (long)(data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
-            long maxPB = data.currentPB;
-            long maxWins = data.currentWins;
+            ulong maxPongScore = 5 + (ulong)(data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
+            ulong maxPB = data.currentPB;
+            ulong maxWins = data.currentWins;
 
             int maxBits = data.progress.numBits;
             int maxCores = data.progress.numCores;
@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void AddPB(long value)
+    public void AddPB(ulong value)
     {
         this.data.currentPB += value;
         this.data.totalPB += value;
@@ -201,14 +201,14 @@ public class GameManager : MonoBehaviour
         SaveSystem.SaveData(data);
     }
 
-    public void RemovePB(long value)
+    public void RemovePB(ulong value)
     {
         this.data.currentPB -= value;
         Debug.Log("current score: " + this.data.currentPB);
         SaveSystem.SaveData(data);
     }
 
-    public void AddWin(long value)
+    public void AddWin(ulong value)
     {
         this.data.currentWins += value;
         this.data.totalWins += value;
