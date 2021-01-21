@@ -117,15 +117,15 @@ public class PongManager : MonoBehaviour
         if (wallID == "RightWall")
         {
             PlayerScore++;
-            managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
+            managerObject.SendMessage("AddPB", (ulong)(((ulong)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue)));
         }
         else
         {
             EnemyScore++;
             if(EnemyScore >= 5 + (scoreLimit.stacks + scoreLimitAdjust) * scoreLimit.increaseValue)
-                managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) * 1.25));
+                managerObject.SendMessage("AddPB", (ulong)(((ulong)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) * 1.25));
             else
-                managerObject.SendMessage("AddPB", (long)(((long)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) + 1));
+                managerObject.SendMessage("AddPB", (ulong)(((ulong)ball.currentValue) * (1 + baseBall.stacks * baseBall.increaseValue) + 1));
         }
 
     }
