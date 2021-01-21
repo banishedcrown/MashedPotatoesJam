@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public ulong alterMoney = 0;
     public ulong alterWins = 0;
     bool inGame = false;
+
+    bool EnabledOptions = false;
+
     private void Awake()
     {
         GameObject[] g = GameObject.FindGameObjectsWithTag("Manager");
@@ -131,7 +134,13 @@ public class GameManager : MonoBehaviour
             {
 
                 CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
-                OptionsPanel.SetActive(true);
+                
+                if (EnabledOptions == false)
+                {
+                    OptionsPanel.SetActive(true);
+                    EnabledOptions = true;
+                }
+                
             }
             else
             {
