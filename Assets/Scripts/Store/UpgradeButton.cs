@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -55,18 +56,32 @@ public class UpgradeButton : MonoBehaviour
     private void Update()
     {
         //print(theUpgrade + "," + gameObject.name + ", " + upgradeName);
+        button.interactable = true;
+
         if (gameData.currentPB < theUpgrade.current_cost || gameData.currentWins < (ulong)theUpgrade.winsRequired)
         {
             button.interactable = false;
         }
-        else
-        {
-            button.interactable = true;
-        }
+
         string cost = theUpgrade.current_cost + " PB";
         if(theUpgrade.winsRequired > 0)
         {
             cost += "\n" + theUpgrade.winsRequired + " wins";
+        }
+        
+        if (theUpgrade.name == UpgradeNames.Pong_Instance_Increase)
+        {
+            double c = Math.Pow(2, manager.GetData().progress.coreLevel);
+            if (theUpgrade.stacks + 1 >= c)
+            {
+                button.interactable = false;
+                cost += "\n" + c*2 + " cores";
+            }
+            else
+            {
+                cost += "\n" + c + " cores";
+            }
+            
         }
         costLabel.GetComponent<TMP_Text>().text = cost;
 
