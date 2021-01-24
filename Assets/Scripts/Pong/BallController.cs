@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class BallController : MonoBehaviour
 {
@@ -116,7 +115,7 @@ public class BallController : MonoBehaviour
         Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
         Upgrade ballValue = manager.GetData().upgrades.Ball_Value;
 
-        currentValue = 1 + ballValue.stacks * ballValue.increaseValue;
+        currentValue = (ulong) Math.Pow(2,ballValue.stacks);
 
         int x = Random.Range(0, 2);
         Debug.Log("ball direction: " + x);
@@ -197,7 +196,7 @@ public class BallController : MonoBehaviour
         if(type == BallTypes.RALLY)
         {
             Upgrade ballMultiplier = manager.GetData().upgrades.Ball_Multiplier;
-            this.currentValue += (ballMultiplier.stacks * ballMultiplier.increaseValue);
+            this.currentValue += ballMultiplier.GetRallyValue();
         }
     }
 

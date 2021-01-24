@@ -45,14 +45,14 @@ public class UpgradeData
     public Upgrade AI_Enemy = new Upgrade(UpgradeNames.AI_Enemy, 10, 5, 0.5f);
 
     public Upgrade Ball_Speed = new Upgrade(UpgradeNames.Ball_Speed, 10, 4, 0.25f);
-    public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 1, 5);
-    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Rally_Multiplier, 50, 5, 1, 25, 1);
+    public Upgrade Ball_Value = new Upgrade(UpgradeNames.Ball_Value, 25, 4, 1, 1);
+    public Upgrade Ball_Multiplier = new Upgrade(UpgradeNames.Rally_Multiplier, 20, 1.8f, 1, 10, 1);
     public Upgrade Ball_Rally = new Upgrade(UpgradeNames.Rally_Ball, 10, 3, 0.10f,10);
 
-    public Upgrade Pong_Instance_Increase = new Upgrade(UpgradeNames.Pong_Instance_Increase, 250, 10, 1, 10);
+    public Upgrade Pong_Instance_Increase = new Upgrade(UpgradeNames.Pong_Instance_Increase, 250, 10, 1, 5);
     public Upgrade Pong_Set_Speed = new Upgrade(UpgradeNames.Pong_Set_Speed, 10, 4, 0.25f);
     public Upgrade Pong_Score_Limit = new Upgrade(UpgradeNames.Pong_Score_Limit, 10, 4, 5);
-    public Upgrade Pong_Auto_Resart = new Upgrade(UpgradeNames.Pong_Auto_Resart, 200, 0, 0, 20);
+    public Upgrade Pong_Auto_Resart = new Upgrade(UpgradeNames.Pong_Auto_Resart, 200, 0, 0, 7);
 
     public Upgrade Unlock_Music = new Upgrade(UpgradeNames.Unlock_Music, 20, 0, 0, 1);
 
@@ -96,11 +96,17 @@ public class Upgrade
     public ulong base_cost; //base cost
     public ulong current_cost;
     public int stacks; //number of times upgraded
-    public int rateIncrease; //rate of increase per stack.
+    public float rateIncrease; //rate of increase per stack.
     public float increaseValue;
     public int winsRequired;
 
-    public Upgrade(UpgradeNames name, ulong basecost, int rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
+
+    private ulong initRallyMValue = 1;
+    private ulong secondRallyMValue = 0;
+    private ulong currentRallyMValue = 1;
+    private int lastRallyStack = 0;
+
+    public Upgrade(UpgradeNames name, ulong basecost, float rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
     {
         this.name = name;
         base_cost = basecost;
@@ -120,13 +126,41 @@ public class Upgrade
 
     public ulong CalcCurrentCost()
     {
-
-        return base_cost * ((ulong)Math.Pow(rateIncrease,stacks));
+        if (name == UpgradeNames.Ball_Value)
+        {
+            return (ulong)(Math.Pow(2,stacks)*(5*stacks + 4));
+        }
+        
+        return base_cost * ((ulong)Math.Pow(rateIncrease, stacks));
     }
 
     public void UpdateCurrentCost()
     {
         this.current_cost = CalcCurrentCost();
+
+        if (name == UpgradeNames.Rally_Multiplier)
+        {
+            ulong temp = initRallyMValue;
+            ulong temp2 = secondRallyMValue;
+
+            for(int c = 0; c < stacks; c++)
+            {
+                currentRallyMValue = temp + temp2;
+                temp = temp2;
+                temp2 = currentRallyMValue;
+            }
+            Debug.Log("Rally Ball initialized to: " + currentRallyMValue + ", stacks: " + stacks);
+            //fallthrough intended
+        }
+    }
+
+    public float GetRallyValue()
+    {
+        if(name == UpgradeNames.Rally_Multiplier)
+        {
+            return currentRallyMValue;
+        }
+        return -10000000000000;
     }
 
 }
