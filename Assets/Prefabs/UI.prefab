@@ -6026,7 +6026,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rally Ball - Chance to spawn a red rally ball that gains points per bounce.
+  m_text: Rally Ball - Chance to spawn a red rally ball that multiplies the points
+    per bounce. Upgrades increase this chance.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
   m_sharedMaterial: {fileID: 1069245204304808136, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
@@ -10922,8 +10923,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rally Multiplier - Adds a chance to increase the value of the ball, each
-    time it bounces. Upgrades increase that chance.
+  m_text: Rally Multiplier - Increases the ball's value by a set amount each time
+    it bounces. Upgrades increase that amount.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
   m_sharedMaterial: {fileID: 1069245204304808136, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
