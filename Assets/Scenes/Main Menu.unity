@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '6e 61 61 68 75 20 42 4e 38 7a 76 39 4f '
+  m_text: '6e 61 61 68 75 20 42 4e 38 7a 76 39 4f 2e 75 62 61 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
   m_sharedMaterial: {fileID: 1069245204304808136, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
