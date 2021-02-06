@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     UpgradeData upgrades;
     ProgressData progress;
 
+    SettingsData settings;
+
     TMP_Text CurrentPBLabel;
     TMP_Text CurrentWinLabel;
 

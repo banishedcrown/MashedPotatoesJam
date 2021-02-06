@@ -42,12 +42,12 @@ public class PlayerController : MonoBehaviour
             vel.y = 0;
         }
 
-        if (Input.GetKey(moveUp))
+        if (GameInputManager.GetKeyDown("Up"))
         {
             delayAI = Time.time;
             vel.y = speed;
         }
-        else if (Input.GetKey(moveDown))
+        else if (GameInputManager.GetKeyDown("Down"))
         {
             delayAI = Time.time;
             vel.y = -speed;
