@@ -44,7 +44,7 @@ public static class GameInputManager
         return keyMapping[keyMap];
     }
 
-        public static bool GetKeyDown(string keyMap)
+    public static bool GetKeyDown(string keyMap)
     {
         bool defKey = false;
         if (keyMap == "Up") defKey = Input.GetAxis("Vertical") > 0;
