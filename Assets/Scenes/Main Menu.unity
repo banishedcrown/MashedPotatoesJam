@@ -3843,6 +3843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9c9eb3e2331734b96bb87e99e59079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIButtonUp: {fileID: 1076535342}
+  UIButtonDown: {fileID: 1812104365}
 --- !u!1 &719461012
 GameObject:
   m_ObjectHideFlags: 0
