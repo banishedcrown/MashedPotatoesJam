@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         SaveSystem.initSavePath();
+
+        upgrades = new UpgradeData();
+        settings = new SettingsData(audioMixer);
+        progress = new ProgressData();
+        data = new GameData(upgrades,progress, settings);
     }
 
     // Start is called before the first frame update
