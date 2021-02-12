@@ -14,46 +14,7 @@ public class KeyBindingMenu : MonoBehaviour
 
     void OnEnable()
     {
-        GameObject LabeledUp = UIButtonUp.transform.Find("Label").gameObject;
-        GameObject LabeledDown = UIButtonDown.transform.Find("Label").gameObject;
-
-        string UpKey = DictonaryChecker(GameInputManager.GetKeyMap("Up"));
-        string DownKey = DictonaryChecker(GameInputManager.GetKeyMap("Down"));
-
         ErrorText.GetComponent<TMP_Text>().text = "";
-
-        if (UpKey == "Not Displayable")
-        {
-            ErrorText.GetComponent<TMP_Text>().text = "Set Key(s) Not Displayable, Set to Default Key(s)";
-            GameInputManager.SetKeyMap("Up", KeyCode.W);
-            LabeledUp.GetComponent<TMP_Text>().text = "W";
-        }
-        else
-        {
-            LabeledUp.GetComponent<TMP_Text>().text = UpKey;
-        }
-
-        if (DownKey == "Not Displayable")
-        {
-            ErrorText.GetComponent<TMP_Text>().text = "Set Key(s) Not Displayable, Set to Default Key(s)";
-            GameInputManager.SetKeyMap("Down", KeyCode.S);
-            LabeledDown.GetComponent<TMP_Text>().text = "S";
-        }
-        else
-        {
-            LabeledDown.GetComponent<TMP_Text>().text = DownKey;
-        }
-
-        if (DownKey == UpKey)
-        {
-            ErrorText.GetComponent<TMP_Text>().text = "Set Keys are the Same, Set to Default Keys";
-            GameInputManager.SetKeyMap("Up", KeyCode.W);
-            LabeledUp.GetComponent<TMP_Text>().text = "W";
-            GameInputManager.SetKeyMap("Down", KeyCode.S);
-            LabeledDown.GetComponent<TMP_Text>().text = "S";
-        }
-
-        //Accessing GameInputManager's Default Keys would be better, but that doesn't seem possible.
 
     }
 
@@ -78,34 +39,41 @@ public class KeyBindingMenu : MonoBehaviour
 
     }
 
-    public void KeyMapUpdate()
+
+    public void DictKeyChecker(string keyname, KeyCode key, GameObject buttonlabel)
     {
-
-    }
-
-    string DictonaryChecker(KeyCode key)
-    {
-
-        string FranzisPretencious = "";
-
         if (PongableRepresentableKeycodes.ContainsKey(key))
         {
-            FranzisPretencious = PongableRepresentableKeycodes[key];
+            buttonlabel.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[key];
+            GameInputManager.SetKeyMap(keyname, key);
         }
         else if ((NotPongableRepresentableKeycodes.ContainsKey(key)) || (key == KeyCode.None))
         {
-            FranzisPretencious = "Not Displayable";
+            GameInputManager.SetKeyMap(keyname, GameInputManager.keyDefaults[keyname]);
+            buttonlabel.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults[keyname]];
+            ErrorText.GetComponent<TMP_Text>().text = "Set Key Not Displayable, Set to Default Key(s)";
         }
         else
         {
-            //Wow if there was only some way to parse keys and give poop strings, oh wait, there is.
-
-            FranzisPretencious = key.ToString();
+            buttonlabel.GetComponent<TMP_Text>().text = key.ToString();
+            GameInputManager.SetKeyMap(keyname, key);
         }
 
-        return FranzisPretencious;
     }
-    
+
+    public void SimularKeyChecker()
+    {
+        if (GameInputManager.GetKeyMap("Up") == GameInputManager.GetKeyMap("Down"))
+        {
+            GameInputManager.SetKeyMap("Up", GameInputManager.keyDefaults["Up"]);
+            GameInputManager.SetKeyMap("Down", GameInputManager.keyDefaults["Down"]);
+            UIButtonUp.transform.Find("Label").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Up"]];
+            UIButtonDown.transform.Find("Label").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Down"]];
+            ErrorText.GetComponent<TMP_Text>().text = "Keys Set to Same Value, Setting both to Defaults";
+        }
+
+    }
+
     //This is formatted to group keys together for their actual keys, dictonaries are assigned to each keycode depending on what best suits it.
     //Pongable Simple keys are able to be represented with our Pongable font, Not Pongable are not, Complex use strings rather than chars as they require them.
     //Some edge cases here but nothing too badly breaks the 3 options.

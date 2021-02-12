@@ -5,6 +5,7 @@ using System;
 public static class GameInputManager
 {
     static Dictionary<string, KeyCode> keyMapping;
+    public static Dictionary<string, KeyCode> keyDefaults;
     static string[] keyMaps = new string[2]
     {
         "Up",
@@ -24,9 +25,11 @@ public static class GameInputManager
     private static void InitializeDictionary()
     {
         keyMapping = new Dictionary<string, KeyCode>();
+        keyDefaults = new Dictionary<string, KeyCode>();
         for (int i = 0; i < keyMaps.Length; ++i)
         {
             keyMapping.Add(keyMaps[i], defaults[i]);
+            keyDefaults.Add(keyMaps[i], defaults[i]);
         }
     }
 
