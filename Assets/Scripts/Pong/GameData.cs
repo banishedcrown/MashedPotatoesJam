@@ -12,16 +12,20 @@ public class GameData
     public int prestigeLevel = 0;
     public UpgradeData upgrades;
     public ProgressData progress;
+    public SettingsData settings;
 
     public GameData(UpgradeData upgrades)
     {
         this.upgrades = upgrades;
+        this.progress = new ProgressData();
+        this.settings = new SettingsData(GameManager.GetManager().audioMixer);
     }
 
-    public GameData(UpgradeData upgrades, ProgressData progress)
+    public GameData(UpgradeData upgrades, ProgressData progress, SettingsData settings)
     {
         this.upgrades = upgrades;
         this.progress = progress;
+        this.settings = settings;
     }
 
     public GameData(GameSaveDataLarge data)
@@ -33,6 +37,7 @@ public class GameData
 
         this.prestigeLevel = data.prestigeLevel;
         this.progress = data.progress;
+        this.settings = data.settings;
 
         this.upgrades = new UpgradeData();
 

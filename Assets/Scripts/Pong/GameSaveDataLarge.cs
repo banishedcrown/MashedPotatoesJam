@@ -17,6 +17,7 @@ public class GameSaveDataLarge
     public int[,] upgrades = new int[(int)UpgradeNames.LengthTracker-1, 1];
 
     public ProgressData progress;
+    public SettingsData settings;
 
     public GameSaveDataLarge(GameData data)
     {
@@ -44,6 +45,7 @@ public class GameSaveDataLarge
 
         this.prestigeLevel = data.prestigeLevel;
         this.progress = data.progress;
+        this.settings = new SettingsData(GameManager.GetManager().audioMixer);
 
         for (int c = 0; c < upgrades.GetLength(0); c++)
         {

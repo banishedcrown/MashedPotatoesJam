@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
     GameObject OptionsPanel;
     Button loadButton;
 
-    public AudioClip music; 
+    public AudioClip music;
+    public AudioMixer audioMixer;
 
     public double alterMoney = 0;
     public double alterWins = 0;
@@ -174,6 +176,8 @@ public class GameManager : MonoBehaviour
         {
             data = loadedData;
             upgrades = data.upgrades;
+            progress = data.progress;
+            settings = data.settings;
         }
         else
         {
@@ -196,9 +200,27 @@ public class GameManager : MonoBehaviour
         //they clicked yes, or no save file. start a new game
         upgrades = new UpgradeData();
         progress = new ProgressData();
-        data = new GameData(upgrades, progress);
+        settings = new SettingsData(audioMixer);
+        data = new GameData(upgrades, progress, settings);
         SaveSystem.SaveData(data);
+
+        UpdateAudio();
+        UpdateKeyMaps();
+
         LoadScene("Pong Scene");
+    }
+
+    public void UpdateAudio()
+    {
+        audioMixer.SetFloat("MasterVol", data.settings.AudioMaster);
+        audioMixer.SetFloat("MusicVol", data.settings.AudioMusic);
+        audioMixer.SetFloat("SFXVol", data.settings.AudioSFX);
+    }
+
+    public void UpdateKeyMaps()
+    {
+        GameInputManager.SetKeyMap("Up", data.settings.upKey);
+        GameInputManager.SetKeyMap("Down", data.settings.downKey);
     }
 
     public static void LoadScene(string scene)
