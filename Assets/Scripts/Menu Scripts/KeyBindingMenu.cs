@@ -20,14 +20,21 @@ public class KeyBindingMenu : MonoBehaviour
         GameObject UIButtonDown = UIButtonDownFolder.transform.Find("Input Button").gameObject;
 
         GameObject ButtonLabelUp = UIButtonUp.transform.Find("ButtonText").gameObject;
-        GameObject ButtonLabelDown = UIButtonUp.transform.Find("ButtonText").gameObject;
+        GameObject ButtonLabelDown = UIButtonDown.transform.Find("ButtonText").gameObject;
+
+        //Debug.Log(GameInputManager.GetKeyMap("Up"));
+        //Debug.Log(GameInputManager.GetKeyMap("Down"));
 
         DictKeyChecker("Up", GameInputManager.GetKeyMap("Up"), ButtonLabelUp);
         DictKeyChecker("Down", GameInputManager.GetKeyMap("Down"), ButtonLabelDown);
 
         SimularKeyChecker();
 
+    }
 
+    void OnDisable()
+    {
+        SaveSystem.SaveSettings(GameManager.GetManager().GetSettings());
     }
 
     //Sets up the Dictonaries. Uses .count to check and see if they are not defined to make sure that we don't do the work more than we need to.
