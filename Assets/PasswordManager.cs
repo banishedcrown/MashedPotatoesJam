@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -18,8 +19,8 @@ public class PasswordManager : MonoBehaviour
 
     public GameObject OverwritePrompt;
 
-    GameSaveData importedData;
- 
+    GameSaveDataLarge importedData;
+    GameSaveData importedDataOld;
 
     void OnEnable()
     {
@@ -35,8 +36,22 @@ public class PasswordManager : MonoBehaviour
             byte[] data = System.Convert.FromBase64String(InputField.text);
             MemoryStream ms = new MemoryStream(data);
             BinaryFormatter formatter = new BinaryFormatter();
-            importedData = formatter.Deserialize(ms) as GameSaveData;
+            importedData = formatter.Deserialize(ms) as GameSaveDataLarge;
+            MemoryStream msOld = new MemoryStream(data);
+            importedDataOld = formatter.Deserialize(msOld) as GameSaveData;
 
+
+            if(importedData != null)
+            {
+                if(importedData.version != 1.5f)
+                {
+                    //bad version given, might be an old save
+                    if (importedDataOld != null)
+                    {
+                        importedData = new GameSaveDataLarge(importedDataOld);
+                    }
+                }
+            }
             if (SaveSystem.SaveExists())
             {
                 OverwritePrompt.SetActive(true);

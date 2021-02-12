@@ -3,28 +3,32 @@
 [Serializable]
 public class GameData
 {
-    public ulong currentPB = 0;
-    public ulong totalPB = 0;
+    public double currentPB = 0;
+    public double totalPB = 0;
 
-    public ulong currentWins = 0;
-    public ulong totalWins = 0;
+    public double currentWins = 0;
+    public double totalWins = 0;
 
     public int prestigeLevel = 0;
     public UpgradeData upgrades;
     public ProgressData progress;
+    public SettingsData settings;
 
     public GameData(UpgradeData upgrades)
     {
         this.upgrades = upgrades;
+        this.progress = new ProgressData();
+        this.settings = new SettingsData(GameManager.GetManager().audioMixer);
     }
 
-    public GameData(UpgradeData upgrades, ProgressData progress)
+    public GameData(UpgradeData upgrades, ProgressData progress, SettingsData settings)
     {
         this.upgrades = upgrades;
         this.progress = progress;
+        this.settings = settings;
     }
 
-    public GameData(GameSaveData data)
+    public GameData(GameSaveDataLarge data)
     {
         this.currentPB = data.currentPB;
         this.totalPB = data.totalPB;
@@ -33,6 +37,7 @@ public class GameData
 
         this.prestigeLevel = data.prestigeLevel;
         this.progress = data.progress;
+        this.settings = data.settings;
 
         this.upgrades = new UpgradeData();
 

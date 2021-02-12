@@ -26,7 +26,7 @@ public class UpgradesScript : MonoBehaviour
         {
             case 44:
                 num = 9;
-                return;
+                break;
 
             case 43:
                 num = 7;
@@ -101,7 +101,6 @@ public class UpgradesScript : MonoBehaviour
                 break;
 
         }
-
         Prompt[num].SetActive(true);
 
     }

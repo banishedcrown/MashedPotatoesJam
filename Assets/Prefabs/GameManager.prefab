@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverwritePrompt: {fileID: 0}
   pongPrefab: {fileID: 7860849196286190837, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
+  secretPrefab: {fileID: 0}
   music: {fileID: 8300000, guid: 8fd2dceab93d77e48aa89797c0697083, type: 3}
+  audioMixer: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
   alterMoney: 0
   alterWins: 0
 --- !u!82 &705764901023466980

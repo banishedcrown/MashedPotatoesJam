@@ -6,14 +6,14 @@ using UnityEngine.Audio;
 
 
 [Serializable]
-class SettingsData
+public class SettingsData
 {
-    float AudioMaster = 1f;
-    float AudioMusic = 1f;
-    float AudioSFX = 1f;
+    public float AudioMaster = 0f;
+    public float AudioMusic = 0f;
+    public float AudioSFX = 0f;
 
-    KeyCode upkey = KeyCode.W;
-    KeyCode downKey = KeyCode.S;
+    public KeyCode upKey = KeyCode.None;
+    public KeyCode downKey = KeyCode.None;
 
     public SettingsData(AudioMixer mixer)
     {
@@ -21,7 +21,7 @@ class SettingsData
         mixer.GetFloat("MusicVol", out AudioMusic);
         mixer.GetFloat("SFXVol", out AudioSFX);
 
-        upkey = GameInputManager.GetKeyMap("Up");
+        upKey = GameInputManager.GetKeyMap("Up");
         downKey = GameInputManager.GetKeyMap("Down");
         
     }

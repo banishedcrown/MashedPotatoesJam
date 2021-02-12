@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,10 +23,11 @@ public class GameManager : MonoBehaviour
     GameObject OptionsPanel;
     Button loadButton;
 
-    public AudioClip music; 
+    public AudioClip music;
+    public AudioMixer audioMixer;
 
-    public ulong alterMoney = 0;
-    public ulong alterWins = 0;
+    public double alterMoney = 0;
+    public double alterWins = 0;
     bool inGame = false;
 
     bool EnabledOptions = false;
@@ -85,9 +88,9 @@ public class GameManager : MonoBehaviour
     {
         if (inGame)
         {
-            ulong maxPongScore = 5 + (ulong)(data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
-            ulong maxPB = data.currentPB;
-            ulong maxWins = data.currentWins;
+            double maxPongScore = 5 + (double)(data.upgrades.Pong_Score_Limit.stacks * data.upgrades.Pong_Score_Limit.increaseValue);
+            double maxPB = data.currentPB;
+            double maxWins = data.currentWins;
 
             int maxBits = data.progress.numBits;
             int maxCores = data.progress.numCores;
@@ -96,7 +99,8 @@ public class GameManager : MonoBehaviour
 
             if (maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore || maxPongScore < 0 || maxPB < 0 || maxWins < 0)
             {
-                LoadScene("Upgrade Process");
+                if(data.prestigeLevel == 0)
+                    LoadScene("Upgrade Process");
             }
 
             if(data.upgrades.Unlock_Music.stacks > 0)
@@ -172,6 +176,8 @@ public class GameManager : MonoBehaviour
         {
             data = loadedData;
             upgrades = data.upgrades;
+            progress = data.progress;
+            settings = data.settings;
         }
         else
         {
@@ -194,9 +200,27 @@ public class GameManager : MonoBehaviour
         //they clicked yes, or no save file. start a new game
         upgrades = new UpgradeData();
         progress = new ProgressData();
-        data = new GameData(upgrades, progress);
+        settings = new SettingsData(audioMixer);
+        data = new GameData(upgrades, progress, settings);
         SaveSystem.SaveData(data);
+
+        UpdateAudio();
+        UpdateKeyMaps();
+
         LoadScene("Pong Scene");
+    }
+
+    public void UpdateAudio()
+    {
+        audioMixer.SetFloat("MasterVol", data.settings.AudioMaster);
+        audioMixer.SetFloat("MusicVol", data.settings.AudioMusic);
+        audioMixer.SetFloat("SFXVol", data.settings.AudioSFX);
+    }
+
+    public void UpdateKeyMaps()
+    {
+        GameInputManager.SetKeyMap("Up", data.settings.upKey);
+        GameInputManager.SetKeyMap("Down", data.settings.downKey);
     }
 
     public static void LoadScene(string scene)
@@ -204,7 +228,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void AddPB(ulong value)
+    public void AddPB(double value)
     {
         this.data.currentPB += value;
         this.data.totalPB += value;
@@ -212,14 +236,14 @@ public class GameManager : MonoBehaviour
         SaveSystem.SaveData(data);
     }
 
-    public void RemovePB(ulong value)
+    public void RemovePB(double value)
     {
         this.data.currentPB -= value;
         Debug.Log("current score: " + this.data.currentPB);
         SaveSystem.SaveData(data);
     }
 
-    public void AddWin(ulong value)
+    public void AddWin(double value)
     {
         this.data.currentWins += value;
         this.data.totalWins += value;
@@ -293,4 +317,14 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    public static void Prestige()
+    {
+        GameManager m = GameManager.GetManager();
+        m.GetData().prestigeLevel++;
+        SaveSystem.SaveData(m.GetData());
+        LoadScene("Main Menu");
+    }
+
+
 }

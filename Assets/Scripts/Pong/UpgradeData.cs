@@ -93,20 +93,20 @@ public class UpgradeData
 public class Upgrade
 {
     public UpgradeNames name = UpgradeNames.None;
-    public ulong base_cost; //base cost
-    public ulong current_cost;
+    public double base_cost; //base cost
+    public double current_cost;
     public int stacks; //number of times upgraded
     public float rateIncrease; //rate of increase per stack.
     public float increaseValue;
     public int winsRequired;
 
 
-    private ulong initRallyMValue = 1;
-    private ulong secondRallyMValue = 0;
-    private ulong currentRallyMValue = 1;
+    private double initRallyMValue = 1;
+    private double secondRallyMValue = 0;
+    private double currentRallyMValue = 1;
     private int lastRallyStack = 0;
 
-    public Upgrade(UpgradeNames name, ulong basecost, float rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
+    public Upgrade(UpgradeNames name, double basecost, float rateIncrease, float increaseValue = 0.1f, int winsRequired = 0, int defaultstacks = 0)
     {
         this.name = name;
         base_cost = basecost;
@@ -124,14 +124,14 @@ public class Upgrade
     }
 
 
-    public ulong CalcCurrentCost()
+    public double CalcCurrentCost()
     {
         if (name == UpgradeNames.Ball_Value)
         {
-            return (ulong)(Math.Pow(2,stacks)*(5*stacks + 4));
+            return (double)(Math.Pow(2,stacks)*(5*stacks + 4));
         }
         
-        return base_cost * ((ulong)Math.Pow(rateIncrease, stacks));
+        return base_cost * ((double)Math.Pow(rateIncrease, stacks));
     }
 
     public void UpdateCurrentCost()
@@ -140,8 +140,8 @@ public class Upgrade
 
         if (name == UpgradeNames.Rally_Multiplier)
         {
-            ulong temp = initRallyMValue;
-            ulong temp2 = secondRallyMValue;
+            double temp = initRallyMValue;
+            double temp2 = secondRallyMValue;
 
             for(int c = 0; c < stacks; c++)
             {
@@ -154,7 +154,7 @@ public class Upgrade
         }
     }
 
-    public float GetRallyValue()
+    public double GetRallyValue()
     {
         if(name == UpgradeNames.Rally_Multiplier)
         {
