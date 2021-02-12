@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         SaveSystem.initSavePath();
 
         settings = SaveSystem.LoadSettings();
+        GameInputManager.SetKeyMap("Up", settings.upKey);
+        GameInputManager.SetKeyMap("Down", settings.downKey);
         UpdateAudio();
         UpdateKeyMaps();
     }

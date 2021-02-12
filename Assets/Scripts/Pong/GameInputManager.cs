@@ -48,6 +48,7 @@ public static class GameInputManager
         {
             m.GetSettings().downKey = key;
         }
+
     }
 
     public static KeyCode GetKeyMap(string keyMap)
