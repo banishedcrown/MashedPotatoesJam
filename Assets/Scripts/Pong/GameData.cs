@@ -24,7 +24,7 @@ public class GameData
         this.progress = progress;
     }
 
-    public GameData(GameSaveData data)
+    public GameData(GameSaveDataLarge data)
     {
         this.currentPB = data.currentPB;
         this.totalPB = data.totalPB;

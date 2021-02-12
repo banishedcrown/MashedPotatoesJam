@@ -56,7 +56,7 @@ public static class SaveSystem
             continue;
         inUse = true;
 
-        GameSaveData gameSaveData = new GameSaveData(data);
+        GameSaveDataLarge gameSaveData = new GameSaveDataLarge(data);
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -71,13 +71,13 @@ public static class SaveSystem
         inUse = false;
     }
 
-    public static void SaveData(GameSaveDataOld data)
+    public static void SaveData(GameSaveData data)
     {
         while (inUse)
             continue;
         inUse = true;
 
-        GameSaveData gameSaveData = new GameSaveData(data);
+        GameSaveDataLarge gameSaveData = new GameSaveDataLarge(data);
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -99,7 +99,7 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            GameSaveData data = formatter.Deserialize(stream) as GameSaveData;
+            GameSaveDataLarge data = formatter.Deserialize(stream) as GameSaveDataLarge;
 
             GameData loadedData = new GameData(data);
 
@@ -139,7 +139,7 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(outDatedPath, FileMode.Open);
-            GameSaveDataOld loadedData = formatter.Deserialize(stream) as GameSaveDataOld;
+            GameSaveData loadedData = formatter.Deserialize(stream) as GameSaveData;
 
             stream.Close();
 

@@ -19,8 +19,8 @@ public class PasswordManager : MonoBehaviour
 
     public GameObject OverwritePrompt;
 
-    GameSaveData importedData;
-    GameSaveDataOld importedDataOld;
+    GameSaveDataLarge importedData;
+    GameSaveData importedDataOld;
 
     void OnEnable()
     {
@@ -36,9 +36,9 @@ public class PasswordManager : MonoBehaviour
             byte[] data = System.Convert.FromBase64String(InputField.text);
             MemoryStream ms = new MemoryStream(data);
             BinaryFormatter formatter = new BinaryFormatter();
-            importedData = formatter.Deserialize(ms) as GameSaveData;
+            importedData = formatter.Deserialize(ms) as GameSaveDataLarge;
             MemoryStream msOld = new MemoryStream(data);
-            importedDataOld = formatter.Deserialize(msOld) as GameSaveDataOld;
+            importedDataOld = formatter.Deserialize(msOld) as GameSaveData;
 
 
             if(importedData != null)
@@ -48,7 +48,7 @@ public class PasswordManager : MonoBehaviour
                     //bad version given, might be an old save
                     if (importedDataOld != null)
                     {
-                        importedData = new GameSaveData(importedDataOld);
+                        importedData = new GameSaveDataLarge(importedDataOld);
                     }
                 }
             }
