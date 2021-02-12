@@ -40,14 +40,13 @@ public static class GameInputManager
         keyMapping[keyMap] = key;
 
         GameManager m = GameManager.GetManager();
-        GameData data = m.GetData();
         if (keyMap == keyMaps[0])
         {
-            data.settings.upKey = key;
+            m.GetSettings().upKey = key;
         }
         else if (keyMap == keyMaps[1])
         {
-            data.settings.downKey = key;
+            m.GetSettings().downKey = key;
         }
     }
 

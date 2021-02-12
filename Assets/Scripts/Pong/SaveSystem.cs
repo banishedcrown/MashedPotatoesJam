@@ -9,17 +9,21 @@ public static class SaveSystem
     private static extern void syncSystem();
 
     static string path = Application.persistentDataPath + "/jpgame_v1_5.data";
+    static string settingsPath = Application.persistentDataPath + "/jpsettings_v1_5.settings";
+
     static string deprecatedWebPath = "/idbfs/81d2821253ddbf7ddd185bb6991530b9/game.data";
     static string deprecatedWebPath2 = "/idbfs/jpgame2.data";
     static string deprecatedPath = Application.persistentDataPath + "/game.data";
     static string deprecatedPath2 = Application.persistentDataPath + "/jpgame.data";
     static bool inUse = false;
+    static bool settingsInUse = false;
     public static void initSavePath()
     {
         
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            path = "/idbfs/jpgame.data";
+            path = "/idbfs/jpgame_v1_5.data";
+            settingsPath = "/idbfs/jpsettings_v1_5.settings";
 
             if (!File.Exists(path)) //let's try to replace the old save immediately.
             {
@@ -92,6 +96,7 @@ public static class SaveSystem
         inUse = false;
     }
 
+
     public static GameData LoadData()
     {
         Debug.Log("loading from path: " + path);
@@ -110,6 +115,47 @@ public static class SaveSystem
         {
             Debug.LogError("Tried to load with no saveData");
             return null;
+        }
+    }
+
+
+    public static void SaveSettings(SettingsData data)
+    {
+        while (settingsInUse)
+            continue;
+        settingsInUse = true;
+
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        FileStream stream = new FileStream(settingsPath, FileMode.OpenOrCreate);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            syncSystem();
+        }
+        settingsInUse = false;
+    }
+
+    public static SettingsData LoadSettings()
+    {
+        Debug.Log("loading settings from path: " + settingsPath);
+        if (File.Exists(settingsPath))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(settingsPath, FileMode.Open);
+            SettingsData data = formatter.Deserialize(stream) as SettingsData;
+
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.Log("Tried to load with no Settings, creating defaults");
+            SettingsData settings = new SettingsData(GameManager.GetManager().audioMixer);
+            SaveSettings(settings);
+            return settings;
         }
     }
 

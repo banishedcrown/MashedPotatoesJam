@@ -14,7 +14,6 @@ public class SettingsData
 
     public KeyCode upKey = KeyCode.None;
     public KeyCode downKey = KeyCode.None;
-
     public SettingsData(AudioMixer mixer)
     {
         mixer.GetFloat("MasterVol", out AudioMaster);

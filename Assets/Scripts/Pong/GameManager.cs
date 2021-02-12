@@ -48,10 +48,9 @@ public class GameManager : MonoBehaviour
         }
         SaveSystem.initSavePath();
 
-        upgrades = new UpgradeData();
-        settings = new SettingsData(audioMixer);
-        progress = new ProgressData();
-        data = new GameData(upgrades,progress, settings);
+        settings = SaveSystem.LoadSettings();
+        UpdateAudio();
+        UpdateKeyMaps();
     }
 
     // Start is called before the first frame update
@@ -183,7 +182,6 @@ public class GameManager : MonoBehaviour
             data = loadedData;
             upgrades = data.upgrades;
             progress = data.progress;
-            settings = data.settings;
         }
         else
         {
@@ -205,28 +203,24 @@ public class GameManager : MonoBehaviour
 
         //they clicked yes, or no save file. start a new game
         upgrades = new UpgradeData();
-        progress = new ProgressData();
-        settings = new SettingsData(audioMixer);
-        data = new GameData(upgrades, progress, settings);
+        progress = new ProgressData(); 
+        data = new GameData(upgrades, progress);
         SaveSystem.SaveData(data);
-
-        UpdateAudio();
-        UpdateKeyMaps();
 
         LoadScene("Pong Scene");
     }
 
     public void UpdateAudio()
     {
-        audioMixer.SetFloat("MasterVol", data.settings.AudioMaster);
-        audioMixer.SetFloat("MusicVol", data.settings.AudioMusic);
-        audioMixer.SetFloat("SFXVol", data.settings.AudioSFX);
+        audioMixer.SetFloat("MasterVol", settings.AudioMaster);
+        audioMixer.SetFloat("MusicVol", settings.AudioMusic);
+        audioMixer.SetFloat("SFXVol", settings.AudioSFX);
     }
 
     public void UpdateKeyMaps()
     {
-        GameInputManager.SetKeyMap("Up", data.settings.upKey);
-        GameInputManager.SetKeyMap("Down", data.settings.downKey);
+        GameInputManager.SetKeyMap("Up", settings.upKey);
+        GameInputManager.SetKeyMap("Down", settings.downKey);
     }
 
     public static void LoadScene(string scene)
@@ -260,6 +254,11 @@ public class GameManager : MonoBehaviour
     public GameData GetData()
     {
         return this.data;
+    }
+
+    public SettingsData GetSettings()
+    {
+        return this.settings;
     }
 
     public static GameManager GetManager()
