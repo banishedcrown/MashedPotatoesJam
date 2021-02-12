@@ -38,6 +38,16 @@ public static class GameInputManager
         if (!keyMapping.ContainsKey(keyMap))
             throw new ArgumentException("Invalid KeyMap in SetKeyMap: " + keyMap);
         keyMapping[keyMap] = key;
+
+        GameManager m = GameManager.GetManager();
+        if (keyMap == keyMaps[0])
+        {
+            m.GetData().settings.upKey = key;
+        }
+        else if (keyMap == keyMaps[1])
+        {
+            m.GetData().settings.downKey = key;
+        }
     }
 
     public static KeyCode GetKeyMap(string keyMap)
@@ -50,8 +60,8 @@ public static class GameInputManager
     public static bool GetKeyDown(string keyMap)
     {
         bool defKey = false;
-        if (keyMap == "Up") defKey = Input.GetAxis("Vertical") > 0;
-        if (keyMap == "Down") defKey = Input.GetAxis("Vertical") < 0;
+        if (keyMap == keyMaps[0]) defKey = Input.GetAxis("Vertical") > 0;
+        if (keyMap == keyMaps[1]) defKey = Input.GetAxis("Vertical") < 0;
         return Input.GetKeyDown(keyMapping[keyMap]) || defKey;
     }
 }
