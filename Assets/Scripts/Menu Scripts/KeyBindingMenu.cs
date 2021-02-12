@@ -5,8 +5,8 @@ using TMPro;
 
 public class KeyBindingMenu : MonoBehaviour
 {
-    public GameObject UIButtonUp;
-    public GameObject UIButtonDown;
+    public GameObject UIButtonUpFolder;
+    public GameObject UIButtonDownFolder;
     public GameObject ErrorText;
 
     public Dictionary<KeyCode, string> PongableRepresentableKeycodes = new Dictionary<KeyCode, string>();
@@ -16,11 +16,14 @@ public class KeyBindingMenu : MonoBehaviour
     {
         ErrorText.GetComponent<TMP_Text>().text = "";
 
-        GameObject LabelUp = UIButtonUp.transform.Find("Label").gameObject;
-        GameObject LabelDown = UIButtonUp.transform.Find("Label").gameObject;
+        GameObject UIButtonUp = UIButtonUpFolder.transform.Find("Input Button").gameObject;
+        GameObject UIButtonDown = UIButtonDownFolder.transform.Find("Input Button").gameObject;
 
-        DictKeyChecker("Up", GameInputManager.GetKeyMap("Up"), LabelUp);
-        DictKeyChecker("Down", GameInputManager.GetKeyMap("Down"), LabelDown);
+        GameObject ButtonLabelUp = UIButtonUp.transform.Find("ButtonText").gameObject;
+        GameObject ButtonLabelDown = UIButtonUp.transform.Find("ButtonText").gameObject;
+
+        DictKeyChecker("Up", GameInputManager.GetKeyMap("Up"), ButtonLabelUp);
+        DictKeyChecker("Down", GameInputManager.GetKeyMap("Down"), ButtonLabelDown);
 
         SimularKeyChecker();
 
@@ -76,8 +79,16 @@ public class KeyBindingMenu : MonoBehaviour
         {
             GameInputManager.SetKeyMap("Up", GameInputManager.keyDefaults["Up"]);
             GameInputManager.SetKeyMap("Down", GameInputManager.keyDefaults["Down"]);
-            UIButtonUp.transform.Find("Label").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Up"]];
-            UIButtonDown.transform.Find("Label").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Down"]];
+
+            GameObject UIButtonUp = UIButtonUpFolder.transform.Find("Input Button").gameObject;
+            GameObject UIButtonDown = UIButtonDownFolder.transform.Find("Input Button").gameObject;
+            
+            GameObject ButtonLabelUp = UIButtonUp.transform.Find("ButtonText").gameObject;
+            GameObject ButtonLabelDown = UIButtonUp.transform.Find("ButtonText").gameObject;
+            
+            ButtonLabelUp.transform.Find("ButtonText").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Up"]];
+            ButtonLabelDown.transform.Find("ButtonText").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Down"]];
+
             ErrorText.GetComponent<TMP_Text>().text = "Keys Set to Same Value, Setting both to Defaults";
         }
 
@@ -255,9 +266,9 @@ public class KeyBindingMenu : MonoBehaviour
         PongableRepresentableKeycodes.Add(KeyCode.Pause, "Pause Key");
 
         PongableRepresentableKeycodes.Add(KeyCode.LeftCommand, "Left Cmmd");
-        PongableRepresentableKeycodes.Add(KeyCode.LeftApple, "Left Cmmd");
+        //PongableRepresentableKeycodes.Add(KeyCode.LeftApple, "Left Apple");
         PongableRepresentableKeycodes.Add(KeyCode.RightCommand, "Right Cmmd");
-        PongableRepresentableKeycodes.Add(KeyCode.RightApple, "Right Cmmd");
+        //PongableRepresentableKeycodes.Add(KeyCode.RightApple, "Right Apple");
         PongableRepresentableKeycodes.Add(KeyCode.LeftWindows, "Left Windows");
         PongableRepresentableKeycodes.Add(KeyCode.RightWindows, "Right Windows");
 
