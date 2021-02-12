@@ -16,6 +16,15 @@ public class KeyBindingMenu : MonoBehaviour
     {
         ErrorText.GetComponent<TMP_Text>().text = "";
 
+        GameObject LabelUp = UIButtonUp.transform.Find("Label").gameObject;
+        GameObject LabelDown = UIButtonUp.transform.Find("Label").gameObject;
+
+        DictKeyChecker("Up", GameInputManager.GetKeyMap("Up"), LabelUp);
+        DictKeyChecker("Down", GameInputManager.GetKeyMap("Down"), LabelDown);
+
+        SimularKeyChecker();
+
+
     }
 
     //Sets up the Dictonaries. Uses .count to check and see if they are not defined to make sure that we don't do the work more than we need to.
@@ -51,7 +60,7 @@ public class KeyBindingMenu : MonoBehaviour
         {
             GameInputManager.SetKeyMap(keyname, GameInputManager.keyDefaults[keyname]);
             buttonlabel.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults[keyname]];
-            ErrorText.GetComponent<TMP_Text>().text = "Set Key Not Displayable, Set to Default Key(s)";
+            ErrorText.GetComponent<TMP_Text>().text = "Set Key Not Displayable, Set to Default Key";
         }
         else
         {
