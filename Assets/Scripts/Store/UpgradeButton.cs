@@ -58,7 +58,7 @@ public class UpgradeButton : MonoBehaviour
         //print(theUpgrade + "," + gameObject.name + ", " + upgradeName);
         button.interactable = true;
 
-        if (gameData.currentPB < theUpgrade.current_cost || gameData.currentWins < (ulong)theUpgrade.winsRequired)
+        if (gameData.currentPB < theUpgrade.current_cost || gameData.currentWins < (double)theUpgrade.winsRequired)
         {
             button.interactable = false;
         }

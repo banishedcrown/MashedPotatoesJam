@@ -16,7 +16,7 @@ public class BallController : MonoBehaviour
     private Vector3 spawnPoint;
     private AudioSource audioSource;
 
-    public float currentValue = 1;
+    public double currentValue = 1;
 
     public bool instancedBall = true;
 
@@ -115,7 +115,7 @@ public class BallController : MonoBehaviour
         Upgrade ballSpeed = manager.GetData().upgrades.Ball_Speed;
         Upgrade ballValue = manager.GetData().upgrades.Ball_Value;
 
-        currentValue = (ulong) Math.Pow(2,ballValue.stacks);
+        currentValue = (double) Math.Pow(2,ballValue.stacks);
 
         int x = Random.Range(0, 2);
         Debug.Log("ball direction: " + x);

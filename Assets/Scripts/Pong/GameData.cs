@@ -3,11 +3,11 @@
 [Serializable]
 public class GameData
 {
-    public ulong currentPB = 0;
-    public ulong totalPB = 0;
+    public double currentPB = 0;
+    public double totalPB = 0;
 
-    public ulong currentWins = 0;
-    public ulong totalWins = 0;
+    public double currentWins = 0;
+    public double totalWins = 0;
 
     public int prestigeLevel = 0;
     public UpgradeData upgrades;
