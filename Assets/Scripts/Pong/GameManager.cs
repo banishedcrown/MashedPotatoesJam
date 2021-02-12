@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -96,7 +97,8 @@ public class GameManager : MonoBehaviour
 
             if (maxNum < maxPB || maxNum < maxWins || maxNum < maxPongScore || maxPongScore < 0 || maxPB < 0 || maxWins < 0)
             {
-                LoadScene("Upgrade Process");
+                if(data.prestigeLevel == 0)
+                    LoadScene("Upgrade Process");
             }
 
             if(data.upgrades.Unlock_Music.stacks > 0)
@@ -293,4 +295,14 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    public static void Prestige()
+    {
+        GameManager m = GameManager.GetManager();
+        m.GetData().prestigeLevel++;
+        SaveSystem.SaveData(m.GetData());
+        LoadScene("Main Menu");
+    }
+
+
 }

@@ -7347,14 +7347,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570082729}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: Prestige
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Main Menu
+          m_StringArgument: Prestige
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &928602726
@@ -8442,14 +8442,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570082729}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: Prestige
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Main Menu
+          m_StringArgument: Prestige
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &996038391
@@ -13389,14 +13389,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570082729}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: Prestige
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Main Menu
+          m_StringArgument: Prestige
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1631241520
@@ -14308,14 +14308,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570082729}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: Prestige
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Main Menu
+          m_StringArgument: Prestige
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1728924074
@@ -17924,14 +17924,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 570082729}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: Prestige
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Main Menu
+          m_StringArgument: Prestige
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2082632212
