@@ -12,6 +12,9 @@ public class KeyBindingMenu : MonoBehaviour
     public Dictionary<KeyCode, string> PongableRepresentableKeycodes = new Dictionary<KeyCode, string>();
     public Dictionary<KeyCode, string> NotPongableRepresentableKeycodes = new Dictionary<KeyCode, string>();
 
+    public bool CheckingForKey = false;
+    public int ActionToSet = 0;
+
     void OnEnable()
     {
         ErrorText.GetComponent<TMP_Text>().text = "";
@@ -32,9 +35,73 @@ public class KeyBindingMenu : MonoBehaviour
 
     }
 
+    void OnGUI()
+    {
+        Event e = Event.current;
+
+        if (e.isKey && (e.keyCode != KeyCode.None) && (CheckingForKey == true))
+        {
+            CheckingForKey = false;
+            SetupNewKey(e.keyCode);
+        }
+
+    }
+
     void OnDisable()
     {
         SaveSystem.SaveSettings(GameManager.GetManager().GetSettings());
+    }
+
+    //Action 1 is Up, Action 2 is down
+    public void SetupLookingForKey(int Action)
+    {
+        ErrorText.GetComponent<TMP_Text>().text = "";
+        CheckingForKey = true;
+        ActionToSet = Action;
+    }
+
+    public void SetupNewKey(KeyCode key)
+    {
+        GameObject Pointer;
+        GameObject Button;
+        GameObject ButtonLabel;
+
+        switch (ActionToSet)
+        {
+
+            case 1:
+                Pointer = UIButtonUpFolder.transform.Find("Pointer").gameObject;
+                Button = UIButtonUpFolder.transform.Find("Input Button").gameObject;
+                ButtonLabel = Button.transform.Find("ButtonText").gameObject;
+
+                Pointer.SetActive(false);
+
+                DictKeyChecker("Up", key, ButtonLabel);
+                SimularKeyChecker();
+                break;
+
+            case 2:
+                Pointer = UIButtonDownFolder.transform.Find("Pointer").gameObject;
+                Button = UIButtonDownFolder.transform.Find("Input Button").gameObject;
+                ButtonLabel = Button.transform.Find("ButtonText").gameObject;
+
+                Pointer.SetActive(false);
+
+                DictKeyChecker("Down", key, ButtonLabel);
+                SimularKeyChecker();
+                break;
+
+            default:
+                Pointer = UIButtonUpFolder.transform.Find("Pointer").gameObject;
+                Pointer.SetActive(false);
+                Pointer = UIButtonDownFolder.transform.Find("Pointer").gameObject;
+                Pointer.SetActive(false);
+
+                ErrorText.GetComponent<TMP_Text>().text = "Something Went Wrong, Key not Changed";
+
+                break;
+        }
+
     }
 
     //Sets up the Dictonaries. Uses .count to check and see if they are not defined to make sure that we don't do the work more than we need to.
@@ -57,6 +124,8 @@ public class KeyBindingMenu : MonoBehaviour
         //Otherwise do nothing
 
     }
+
+
 
 
     public void DictKeyChecker(string keyname, KeyCode key, GameObject buttonlabel)
