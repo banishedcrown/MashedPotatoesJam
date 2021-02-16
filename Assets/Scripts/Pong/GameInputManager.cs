@@ -58,11 +58,11 @@ public static class GameInputManager
         return keyMapping[keyMap];
     }
 
-    public static bool GetKeyDown(string keyMap)
+    public static bool GetKey(string keyMap)
     {
         bool defKey = false;
         if (keyMap == keyMaps[0]) defKey = Input.GetAxis("Vertical") > 0;
         if (keyMap == keyMaps[1]) defKey = Input.GetAxis("Vertical") < 0;
-        return Input.GetKeyDown(keyMapping[keyMap]) || defKey;
+        return Input.GetKey(keyMapping[keyMap]) || defKey;
     }
 }
