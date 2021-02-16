@@ -125,9 +125,6 @@ public class KeyBindingMenu : MonoBehaviour
 
     }
 
-
-
-
     public void DictKeyChecker(string keyname, KeyCode key, GameObject buttonlabel)
     {
         if (PongableRepresentableKeycodes.ContainsKey(key))
@@ -160,10 +157,16 @@ public class KeyBindingMenu : MonoBehaviour
             GameObject UIButtonDown = UIButtonDownFolder.transform.Find("Input Button").gameObject;
             
             GameObject ButtonLabelUp = UIButtonUp.transform.Find("ButtonText").gameObject;
-            GameObject ButtonLabelDown = UIButtonUp.transform.Find("ButtonText").gameObject;
-            
-            ButtonLabelUp.transform.Find("ButtonText").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Up"]];
-            ButtonLabelDown.transform.Find("ButtonText").gameObject.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[GameInputManager.keyDefaults["Down"]];
+            GameObject ButtonLabelDown = UIButtonDown.transform.Find("ButtonText").gameObject;
+
+            KeyCode Up = GameInputManager.keyDefaults["Up"];
+            KeyCode Down = GameInputManager.keyDefaults["Down"];
+
+            Debug.Log(Up);
+            Debug.Log(Down);
+
+            ButtonLabelUp.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[Up];
+            ButtonLabelDown.GetComponent<TMP_Text>().text = PongableRepresentableKeycodes[Down];
 
             ErrorText.GetComponent<TMP_Text>().text = "Keys Set to Same Value, Setting both to Defaults";
         }
