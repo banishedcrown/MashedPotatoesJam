@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
             {
                 loadButton.interactable = false;
             }
+
+            this.settings = SaveSystem.LoadSettings();
         }
         else
         {
