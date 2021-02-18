@@ -219,6 +219,15 @@ public class GameManager : MonoBehaviour
         audioMixer.SetFloat("MasterVol", settings.AudioMaster);
         audioMixer.SetFloat("MusicVol", settings.AudioMusic);
         audioMixer.SetFloat("SFXVol", settings.AudioSFX);
+
+        float CurrentMaster = 1f;
+        float CurrentMusic = 1f;
+        float CurrentSFX = 1f;
+
+        bool pass = audioMixer.GetFloat("MasterVol", out CurrentMaster);
+        audioMixer.GetFloat("MusicVol", out CurrentMusic);
+        audioMixer.GetFloat("SFXVol", out CurrentSFX);
+
     }
 
     public void UpdateKeyMaps()
@@ -263,6 +272,13 @@ public class GameManager : MonoBehaviour
     public SettingsData GetSettings()
     {
         return this.settings;
+    }
+
+    public AudioMixer GetAudioMixer()
+    {
+        UpdateAudio();
+
+        return this.audioMixer;
     }
 
     public static GameManager GetManager()
