@@ -49,6 +49,11 @@ public class KeyBindingMenu : MonoBehaviour
 
     void OnDisable()
     {
+        GameObject Pointer;
+        Pointer = UIButtonUpFolder.transform.Find("Pointer").gameObject;
+        Pointer.SetActive(false);
+        Pointer = UIButtonDownFolder.transform.Find("Pointer").gameObject;
+        Pointer.SetActive(false);
         SaveSystem.SaveSettings(GameManager.GetManager().GetSettings());
     }
 
