@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SaveOnDisable : MonoBehaviour
+public class SaveVolumeOnDisable : MonoBehaviour
 {
-    public AudioMixer Mixer;
+    private AudioMixer Mixer;
 
     void OnDisable()
     {
+        Mixer = GameManager.GetManager().GetAudioMixer();
+
         float CurrentMaster = 1f;
         float CurrentMusic = 1f;
         float CurrentSFX = 1f;

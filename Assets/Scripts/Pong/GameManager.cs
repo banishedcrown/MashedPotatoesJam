@@ -51,14 +51,13 @@ public class GameManager : MonoBehaviour
         settings = SaveSystem.LoadSettings();
         GameInputManager.SetKeyMap("Up", settings.upKey);
         GameInputManager.SetKeyMap("Down", settings.downKey);
-        UpdateAudio();
         UpdateKeyMaps();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateAudio();
         OnLevelLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
@@ -276,8 +275,12 @@ public class GameManager : MonoBehaviour
 
     public AudioMixer GetAudioMixer()
     {
-        UpdateAudio();
+        return this.audioMixer;
+    }
 
+    public AudioMixer GetUpdatedAudioMixer()
+    {
+        UpdateAudio();
         return this.audioMixer;
     }
 

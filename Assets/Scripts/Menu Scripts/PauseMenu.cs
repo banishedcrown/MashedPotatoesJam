@@ -11,43 +11,25 @@ public class PauseMenu : MonoBehaviour
     public Slider Music;
     public Slider Effects;
 
-    public AudioMixer Mixer;
+    private AudioMixer Mixer;
 
     float PriorTimeScale;
   
     void OnEnable()
     {
-        Pause();
+        Mixer = GameManager.GetManager().GetAudioMixer();
         float CurrentMaster = 1f;
         float CurrentMusic = 1f;
         float CurrentSFX = 1f;
 
         Mixer.GetFloat("MasterVol", out CurrentMaster);
-        Master.value = Mathf.Pow(10, (CurrentMaster / 20));
+        Master.value = Mathf.Pow(10, (CurrentMaster / 20f));
 
         Mixer.GetFloat("MusicVol", out CurrentMusic);
-        Music.value = Mathf.Pow(10, (CurrentMusic / 20));
+        Music.value = Mathf.Pow(10, (CurrentMusic / 20f));
 
         Mixer.GetFloat("SFXVol", out CurrentSFX);
-        Effects.value = Mathf.Pow(10, (CurrentSFX / 20));
-    }
-
-    void Pause()
-    {
-        PriorTimeScale = Time.timeScale;
-        Time.timeScale = 0;
-        Debug.Log(Time.timeScale);
-    }
-
-    public void Resume()
-    {
-        if (PriorTimeScale == 1)
-        {
-            Time.timeScale = 1;
-        }
-
-        //Otherwise do Nothing
-        
+        Effects.value = Mathf.Pow(10, (CurrentSFX / 20f));
     }
 
     public void MainMenu()

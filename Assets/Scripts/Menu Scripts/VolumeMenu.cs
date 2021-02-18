@@ -11,7 +11,7 @@ public class VolumeMenu : MonoBehaviour
     public Slider Music;
     public Slider Effects;
 
-    public AudioMixer Mixer;
+    private AudioMixer Mixer;
 
     void OnEnable()
     {

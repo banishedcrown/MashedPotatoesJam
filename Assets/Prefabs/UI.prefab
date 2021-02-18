@@ -3616,6 +3616,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5141835589087239045}
+        m_TargetAssemblyTypeName: OnEnablePauseScript, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1875786340863631848
 GameObject:
   m_ObjectHideFlags: 0
@@ -12313,6 +12325,7 @@ GameObject:
   - component: {fileID: 3416409426117618736}
   - component: {fileID: 7266440869741896491}
   - component: {fileID: 4075221530751101824}
+  - component: {fileID: 5141835589087239045}
   - component: {fileID: 3649801712756620268}
   m_Layer: 5
   m_Name: Pause Menu
@@ -12399,7 +12412,18 @@ MonoBehaviour:
   Master: {fileID: 2776672852616916964}
   Music: {fileID: 2803468526718257630}
   Effects: {fileID: 3672781169061708090}
-  Mixer: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
+--- !u!114 &5141835589087239045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906751851970466707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1652ab8cea4795a40b9bb9bcae6834e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3649801712756620268
 MonoBehaviour:
   m_ObjectHideFlags: 0
