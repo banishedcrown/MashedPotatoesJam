@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
             if (data.currentWins >= 1)
             {
 
-                CurrentPBLabel.text = "CURRENT PB: " + data.currentPB;
+                CurrentPBLabel.text = "CURRENT PB: " + Math.Round(data.currentPB);
                 
                 if (EnabledOptions == false)
                 {

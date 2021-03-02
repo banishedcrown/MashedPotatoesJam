@@ -63,7 +63,7 @@ public class UpgradeButton : MonoBehaviour
             button.interactable = false;
         }
 
-        string cost = theUpgrade.current_cost + " PB";
+        string cost = Math.Round(theUpgrade.current_cost) + " PB";
         if(theUpgrade.winsRequired > 0)
         {
             cost += "\n" + theUpgrade.winsRequired + " wins";
