@@ -1018,9 +1018,7 @@ MonoBehaviour:
     as well.
 
 
-
     You just hope they get the hint.
-
 
 
     You barely hesitate before
@@ -1162,10 +1160,8 @@ MonoBehaviour:
     no longer add on any more cores.
 
 
-
     However as you peek out of the abandoned
     cell you notice that the guards and security cameras barely even register you.
-
 
 
     Even
@@ -4192,16 +4188,14 @@ MonoBehaviour:
     units the bright light of the sun warms your face.
 
 
-
     Looking behind yourself
     you see some small figures in the dark also running to make their escape towards
     you. The door streaming light to guide their way.
 
 
-
-    The darkness of the
-    facility is now behind you. Mankind could certainly be nonexistent outside of
-    this prison but the ones behind will make sure that humanity can be reformed.'
+    The darkness of the facility
+    is now behind you. Mankind could certainly be nonexistent outside of this prison
+    but the ones behind will make sure that humanity can be reformed.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6123,9 +6117,8 @@ MonoBehaviour:
     cameras barely even register you.
 
 
-
-    And then the lights go off. The red
-    emergency lights switching on shortly after.'
+    And then the lights go off. The red emergency
+    lights switching on shortly after.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10426,10 +10419,8 @@ MonoBehaviour:
     as well.
 
 
-
-    You have no fear that they will get the hint, as you see one
-    of the metallic guards teeter and drop to the ground.
-
+    You have no fear that they will get the hint, as you see one of
+    the metallic guards teeter and drop to the ground.
 
 
     You barely hesitate
@@ -11064,7 +11055,6 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You walk to the already open door, the guards stationed there barely even
     reacting as you push some out of the way.
-
 
 
     You can even see some of the
@@ -16133,7 +16123,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Time is meaningless in this place.\n\nI\u2019ve been kept in this decrepit
     facility longer than I can remember. Every day those machines use me for their
-    experiments. \n\nWhen I can I roam the facility. \n"
+    experiments. \n\nWhen I can I roam the facility. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
