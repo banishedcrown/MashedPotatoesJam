@@ -304,6 +304,7 @@ public class GameManager : MonoBehaviour
 
         int count = 0;
         GameObject instances = GameObject.Find("Instances");
+        GameObject original = GameObject.Find("Pong Game First");
         foreach (Transform t in instances.transform)
         {
             if (t.name.StartsWith("Pong"))
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
             Vector3 pos = Vector3.zero;
-            pos.x = 20 * c;
+            pos.x = (20 * c) + original.transform.position.x;
             g.transform.position = pos;
 
         }
@@ -331,6 +332,7 @@ public class GameManager : MonoBehaviour
 
         int count = 0;
         GameObject instances = GameObject.Find("SecretInstances");
+        GameObject original = GameObject.Find("Secret Upgrade First");
         foreach (Transform t in instances.transform)
         {
             if (t.name.StartsWith("Secret"))
@@ -340,7 +342,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject g = GameObject.Instantiate(pongPrefab, instances.transform);
             Vector3 pos = Vector3.zero;
-            pos.x = 20 * c;
+            pos.x = 20 * c + original.transform.position.x;
             g.transform.position = pos;
 
         }

@@ -17,7 +17,7 @@ public class InstanceNavigation : MonoBehaviour
         instances = GameObject.Find("Instances");
         leftButton = transform.Find("Left").gameObject;
         rightButton = transform.Find("Right").gameObject;
-        original = instances.transform.Find("Pong Game").gameObject;
+        original = instances.transform.Find("Pong Game First").gameObject;
     }
 
     private void FixedUpdate()

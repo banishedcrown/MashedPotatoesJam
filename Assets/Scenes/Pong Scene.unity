@@ -1262,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860849196286190837, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
       propertyPath: m_Name
-      value: Pong Game
+      value: Pong Game First
       objectReference: {fileID: 0}
     - target: {fileID: 7860849196286190839, guid: 5545218261debe140bdbaca5fed4e21d, type: 3}
       propertyPath: m_RootOrder
