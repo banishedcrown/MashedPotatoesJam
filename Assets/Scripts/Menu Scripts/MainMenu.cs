@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject Platform;
     public GameObject MenuWebGl;
     public GameObject MenuNotWeb;
+    public GameObject saveOverwritePrompt;
 
     //For Franz
     public bool OverrideActivated;
@@ -76,6 +77,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        GameManager.GetManager().OverwritePrompt = this.saveOverwritePrompt;
         GameManager.GetManager().NewGame();
     }
 
