@@ -11724,7 +11724,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pong Score Limit - Increases the max score for a pong game before reset. '
+  m_text: Pong Score Limit - Increases the max score for a pong game. Upgrade's current
+    level is adjustable.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
   m_sharedMaterial: {fileID: 1069245204304808136, guid: 53b72b6fa37427b4e9e0528080ba62e5, type: 2}
@@ -12436,7 +12437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbe5f459c8f6614aad696454e461203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: 2958b9ca701cfc148ab7966775621d8e, type: 2}
 --- !u!1 &6941865233527101920
 GameObject:
   m_ObjectHideFlags: 0

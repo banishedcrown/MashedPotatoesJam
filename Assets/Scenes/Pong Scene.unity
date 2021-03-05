@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4260363840501704891, guid: 73534b9007ea810478a22891d02506b2, type: 3}
+      propertyPath: m_text
+      value: Pong Score Limit - Increases the max score for a pong game. Upgrade's
+        current level is adjustable.
+      objectReference: {fileID: 0}
     - target: {fileID: 4353688380298815936, guid: 73534b9007ea810478a22891d02506b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
